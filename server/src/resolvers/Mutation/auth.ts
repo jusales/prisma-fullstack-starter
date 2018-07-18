@@ -33,7 +33,6 @@ export const auth = {
   },
 
   async createBusiness(parent, args, ctx: Context, info) {
-    const business = await ctx.db.mutation.createBusiness({ ...args }, info)
-    return business
+    return await ctx.db.mutation.createBusiness({ ...args }, info)
   }
 }
