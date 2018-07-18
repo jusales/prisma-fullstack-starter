@@ -23,6 +23,10 @@ const GET_RES = gql`
   }
 `
 
+// data.__type.fields.foreach(field => {
+//   createButton(field.name)
+// })
+
 class Feed extends React.Component {
   state = {
     tags: {}
@@ -35,7 +39,9 @@ class Feed extends React.Component {
           query={GET_RES}
           variables={{
             where: {
-              tags: this.state.tags
+              tags: {
+                BRUNCH: this.state.brunch
+              }
             }
           }}
         >
