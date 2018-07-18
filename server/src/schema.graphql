@@ -2,11 +2,58 @@
 
 type Query {
   me: User!
+  business(where: BusinessWhereInput): [Business]!
 }
 
 type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  createBusiness(
+    id: ID! @unique
+    zomatoID: String
+    name: String!
+    url: String
+    address: String
+    locality: String
+    city: String
+    latitude: String
+    longitude: String
+    price: PriceRange
+    cuisine: [Cuisine]
+    tags: [Tag]
+    type: BusinessType
+  ): Business!
+}
+
+# type Food {
+#   name: String!
+#   location: String
+#   cuisine: Cuisine
+#   hours: String
+#   tags: [Tag]
+# }
+
+# type Drink {
+#   name: String!
+#   location: String
+#   hours: String
+#   tags: [Tag]
+# }
+
+type Business {
+  id: ID! @unique
+  zomatoID: String
+  name: String!
+  url: String
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+  price: PriceRange
+  cuisine: [Cuisine]
+  tags: [Tag]
+  type: BusinessType
 }
 
 type AuthPayload {

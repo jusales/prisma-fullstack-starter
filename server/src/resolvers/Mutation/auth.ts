@@ -30,5 +30,42 @@ export const auth = {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user
     }
+  },
+
+  async createFood(parent, args, ctx: Context, info) {
+    const food = await ctx.db.mutation.createFood(
+      {
+        data: {
+          name: args.name,
+          location: args.location,
+          cuisine: args.cuisine,
+          hours: args.hours,
+          tags: {
+            set: args.tags
+          }
+        }
+      },
+      info
+    )
+
+    return food
+  },
+
+  async createDrink(parent, args, ctx: Context, info) {
+    const drink = await ctx.db.mutation.createDrink(
+      {
+        data: {
+          name: args.name,
+          location: args.location,
+          hours: args.hours,
+          tags: {
+            set: args.tags
+          }
+        }
+      },
+      info
+    )
+
+    return drink
   }
 }

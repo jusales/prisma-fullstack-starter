@@ -1,5 +1,13 @@
 # source: https://eu1.prisma.sh/juliana-sales/app/dev
-# timestamp: Tue Jul 17 2018 13:41:43 GMT+0100 (Western European Summer Time)
+# timestamp: Tue Jul 17 2018 16:31:04 GMT+0100 (Western European Summer Time)
+
+type AggregateDrink {
+  count: Int!
+}
+
+type AggregateFood {
+  count: Int!
+}
 
 type AggregateUser {
   count: Int!
@@ -10,6 +18,515 @@ type BatchPayload {
   count: Long!
 }
 
+enum Cuisine {
+  ITALIAN
+  ASIAN
+  INDIAN
+  MISCELLANEOUS
+  LOCAL
+  VEGAN
+  VEGETARIAN
+  MEDITERRANEAN
+  MEXICAN
+  AMERICAN
+}
+
+type Drink {
+  name: String!
+  location: String
+  hours: String
+  tags: [Tag!]!
+}
+
+"""A connection to a list of items."""
+type DrinkConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [DrinkEdge]!
+  aggregate: AggregateDrink!
+}
+
+input DrinkCreateInput {
+  name: String!
+  location: String
+  hours: String
+  tags: DrinkCreatetagsInput
+}
+
+input DrinkCreatetagsInput {
+  set: [Tag!]
+}
+
+"""An edge in a connection."""
+type DrinkEdge {
+  """The item at the end of the edge."""
+  node: Drink!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum DrinkOrderByInput {
+  name_ASC
+  name_DESC
+  location_ASC
+  location_DESC
+  hours_ASC
+  hours_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type DrinkPreviousValues {
+  name: String!
+  location: String
+  hours: String
+  tags: [Tag!]!
+}
+
+type DrinkSubscriptionPayload {
+  mutation: MutationType!
+  node: Drink
+  updatedFields: [String!]
+  previousValues: DrinkPreviousValues
+}
+
+input DrinkSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DrinkSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DrinkSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DrinkSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: DrinkWhereInput
+}
+
+input DrinkUpdateInput {
+  name: String
+  location: String
+  hours: String
+  tags: DrinkUpdatetagsInput
+}
+
+input DrinkUpdatetagsInput {
+  set: [Tag!]
+}
+
+input DrinkWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DrinkWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DrinkWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DrinkWhereInput!]
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  location: String
+
+  """All values that are not equal to given value."""
+  location_not: String
+
+  """All values that are contained in given list."""
+  location_in: [String!]
+
+  """All values that are not contained in given list."""
+  location_not_in: [String!]
+
+  """All values less than the given value."""
+  location_lt: String
+
+  """All values less than or equal the given value."""
+  location_lte: String
+
+  """All values greater than the given value."""
+  location_gt: String
+
+  """All values greater than or equal the given value."""
+  location_gte: String
+
+  """All values containing the given string."""
+  location_contains: String
+
+  """All values not containing the given string."""
+  location_not_contains: String
+
+  """All values starting with the given string."""
+  location_starts_with: String
+
+  """All values not starting with the given string."""
+  location_not_starts_with: String
+
+  """All values ending with the given string."""
+  location_ends_with: String
+
+  """All values not ending with the given string."""
+  location_not_ends_with: String
+  hours: String
+
+  """All values that are not equal to given value."""
+  hours_not: String
+
+  """All values that are contained in given list."""
+  hours_in: [String!]
+
+  """All values that are not contained in given list."""
+  hours_not_in: [String!]
+
+  """All values less than the given value."""
+  hours_lt: String
+
+  """All values less than or equal the given value."""
+  hours_lte: String
+
+  """All values greater than the given value."""
+  hours_gt: String
+
+  """All values greater than or equal the given value."""
+  hours_gte: String
+
+  """All values containing the given string."""
+  hours_contains: String
+
+  """All values not containing the given string."""
+  hours_not_contains: String
+
+  """All values starting with the given string."""
+  hours_starts_with: String
+
+  """All values not starting with the given string."""
+  hours_not_starts_with: String
+
+  """All values ending with the given string."""
+  hours_ends_with: String
+
+  """All values not ending with the given string."""
+  hours_not_ends_with: String
+}
+
+type Food {
+  name: String!
+  location: String
+  cuisine: Cuisine
+  hours: String
+  tags: [Tag!]!
+}
+
+"""A connection to a list of items."""
+type FoodConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [FoodEdge]!
+  aggregate: AggregateFood!
+}
+
+input FoodCreateInput {
+  name: String!
+  location: String
+  cuisine: Cuisine
+  hours: String
+  tags: FoodCreatetagsInput
+}
+
+input FoodCreatetagsInput {
+  set: [Tag!]
+}
+
+"""An edge in a connection."""
+type FoodEdge {
+  """The item at the end of the edge."""
+  node: Food!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum FoodOrderByInput {
+  name_ASC
+  name_DESC
+  location_ASC
+  location_DESC
+  cuisine_ASC
+  cuisine_DESC
+  hours_ASC
+  hours_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type FoodPreviousValues {
+  name: String!
+  location: String
+  cuisine: Cuisine
+  hours: String
+  tags: [Tag!]!
+}
+
+type FoodSubscriptionPayload {
+  mutation: MutationType!
+  node: Food
+  updatedFields: [String!]
+  previousValues: FoodPreviousValues
+}
+
+input FoodSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [FoodSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [FoodSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [FoodSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: FoodWhereInput
+}
+
+input FoodUpdateInput {
+  name: String
+  location: String
+  cuisine: Cuisine
+  hours: String
+  tags: FoodUpdatetagsInput
+}
+
+input FoodUpdatetagsInput {
+  set: [Tag!]
+}
+
+input FoodWhereInput {
+  """Logical AND on all given filters."""
+  AND: [FoodWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [FoodWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [FoodWhereInput!]
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  location: String
+
+  """All values that are not equal to given value."""
+  location_not: String
+
+  """All values that are contained in given list."""
+  location_in: [String!]
+
+  """All values that are not contained in given list."""
+  location_not_in: [String!]
+
+  """All values less than the given value."""
+  location_lt: String
+
+  """All values less than or equal the given value."""
+  location_lte: String
+
+  """All values greater than the given value."""
+  location_gt: String
+
+  """All values greater than or equal the given value."""
+  location_gte: String
+
+  """All values containing the given string."""
+  location_contains: String
+
+  """All values not containing the given string."""
+  location_not_contains: String
+
+  """All values starting with the given string."""
+  location_starts_with: String
+
+  """All values not starting with the given string."""
+  location_not_starts_with: String
+
+  """All values ending with the given string."""
+  location_ends_with: String
+
+  """All values not ending with the given string."""
+  location_not_ends_with: String
+  cuisine: Cuisine
+
+  """All values that are not equal to given value."""
+  cuisine_not: Cuisine
+
+  """All values that are contained in given list."""
+  cuisine_in: [Cuisine!]
+
+  """All values that are not contained in given list."""
+  cuisine_not_in: [Cuisine!]
+  hours: String
+
+  """All values that are not equal to given value."""
+  hours_not: String
+
+  """All values that are contained in given list."""
+  hours_in: [String!]
+
+  """All values that are not contained in given list."""
+  hours_not_in: [String!]
+
+  """All values less than the given value."""
+  hours_lt: String
+
+  """All values less than or equal the given value."""
+  hours_lte: String
+
+  """All values greater than the given value."""
+  hours_gt: String
+
+  """All values greater than or equal the given value."""
+  hours_gte: String
+
+  """All values containing the given string."""
+  hours_contains: String
+
+  """All values not containing the given string."""
+  hours_not_contains: String
+
+  """All values starting with the given string."""
+  hours_starts_with: String
+
+  """All values not starting with the given string."""
+  hours_not_starts_with: String
+
+  """All values ending with the given string."""
+  hours_ends_with: String
+
+  """All values not ending with the given string."""
+  hours_not_ends_with: String
+}
+
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -18,11 +535,17 @@ scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  createFood(data: FoodCreateInput!): Food!
+  createDrink(data: DrinkCreateInput!): Drink!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   deleteUser(where: UserWhereUniqueInput!): User
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyFoods(data: FoodUpdateInput!, where: FoodWhereInput): BatchPayload!
+  updateManyDrinks(data: DrinkUpdateInput!, where: DrinkWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyFoods(where: FoodWhereInput): BatchPayload!
+  deleteManyDrinks(where: DrinkWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -54,8 +577,12 @@ type PageInfo {
 
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  foods(where: FoodWhereInput, orderBy: FoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Food]!
+  drinks(where: DrinkWhereInput, orderBy: DrinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Drink]!
   user(where: UserWhereUniqueInput!): User
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  foodsConnection(where: FoodWhereInput, orderBy: FoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FoodConnection!
+  drinksConnection(where: DrinkWhereInput, orderBy: DrinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DrinkConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -66,6 +593,16 @@ type Query {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  food(where: FoodSubscriptionWhereInput): FoodSubscriptionPayload
+  drink(where: DrinkSubscriptionWhereInput): DrinkSubscriptionPayload
+}
+
+enum Tag {
+  BREAKFAST
+  LUNCH
+  DINNER
+  BRUNCH
+  DESSERT
 }
 
 type User implements Node {

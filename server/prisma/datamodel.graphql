@@ -4,3 +4,81 @@ type User {
   email: String! @unique
   password: String!
 }
+
+# type Category {
+#   name:
+# }
+
+# type Food {
+#   name: String!
+#   location: String
+#   cuisine: Cuisine
+#   hours: String
+#   tags: [Tag]
+# }
+
+# type Drink {
+#   name: String!
+#   location: String
+#   hours: String
+#   tags: [Tag]
+# }
+
+enum Tag {
+  BREAKFAST
+  LUNCH
+  DINNER
+  BRUNCH
+  DESSERT
+}
+
+enum Cuisine {
+  ITALIAN
+  ASIAN
+  INDIAN
+  MISCELLANEOUS
+  LOCAL
+  VEGAN
+  VEGETARIAN
+  MEDITERRANEAN
+  MEXICAN
+  AMERICAN
+}
+
+
+enum BusinessType {
+  BAR
+  RESTAURANT
+}
+
+enum PriceRange {
+  1
+  2
+  3
+  4
+  5
+}
+
+type Business {
+  id: ID! @unique
+  zomatoID: String
+  name: String!
+  url: String
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+  price: PriceRange
+  cuisine: [Cuisine]
+  tags: [Tag]
+  type: BusinessType
+}
+
+type Location {
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+}
