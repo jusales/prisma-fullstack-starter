@@ -33,31 +33,7 @@ export const auth = {
   },
 
   async createBusiness(parent, args, ctx: Context, info) {
-    const business = await ctx.db.mutation.createBusiness(
-      {
-        data: {
-          zomatoID: args.zomatoID,
-          name: args.name,
-          url: args.url,
-          address: args.address,
-          locality: args.locality,
-          city: args.city,
-          latitude: args.latitude,
-          longitude: args.longitude,
-          price: args.price,
-          cuisine: {
-            set: args.cuisine
-          },
-          hours: args.hours,
-          tags: {
-            set: args.tags
-          },
-          type: args.type
-        }
-      },
-      info
-    )
-
+    const business = await ctx.db.mutation.createBusiness({...args}, info)
     return business
   }
 }
