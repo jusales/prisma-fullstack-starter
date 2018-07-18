@@ -5,46 +5,26 @@ type User {
   password: String!
 }
 
-# type Category {
-#   name:
-# }
-
-# type Food {
-#   name: String!
-#   location: String
-#   cuisine: Cuisine
-#   hours: String
-#   tags: [Tag]
-# }
-
-# type Drink {
-#   name: String!
-#   location: String
-#   hours: String
-#   tags: [Tag]
-# }
-
-enum Tag {
-  BREAKFAST
-  LUNCH
-  DINNER
-  BRUNCH
-  DESSERT
+type Tags {
+  BREAKFAST: Boolean! @default(value: false)
+  LUNCH: Boolean! @default(value: false)
+  DINNER: Boolean! @default(value: false)
+  BRUNCH: Boolean! @default(value: false)
+  DESSERT: Boolean! @default(value: false)
 }
 
-enum Cuisine {
-  ITALIAN
-  ASIAN
-  INDIAN
-  MISCELLANEOUS
-  LOCAL
-  VEGAN
-  VEGETARIAN
-  MEDITERRANEAN
-  MEXICAN
-  AMERICAN
+type Cuisines {
+  ITALIAN: Boolean! @default(value: false)
+  ASIAN: Boolean! @default(value: false)
+  INDIAN: Boolean! @default(value: false)
+  MISCELLANEOUS: Boolean! @default(value: false)
+  LOCAL: Boolean! @default(value: false)
+  VEGAN: Boolean! @default(value: false)
+  VEGETARIAN: Boolean! @default(value: false)
+  MEDITERRANEAN: Boolean! @default(value: false)
+  MEXICAN: Boolean! @default(value: false)
+  AMERICAN: Boolean! @default(value: false)
 }
-
 
 enum BusinessType {
   BAR
@@ -52,11 +32,11 @@ enum BusinessType {
 }
 
 enum PriceRange {
-  1
-  2
-  3
-  4
-  5
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
 }
 
 type Business {
@@ -70,15 +50,8 @@ type Business {
   latitude: String
   longitude: String
   price: PriceRange
-  cuisine: [Cuisine]
-  tags: [Tag]
+  hours: String
+  cuisine: Cuisines
+  tags: Tags
   type: BusinessType
-}
-
-type Location {
-  address: String
-  locality: String
-  city: String
-  latitude: String
-  longitude: String
 }

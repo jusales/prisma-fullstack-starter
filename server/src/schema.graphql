@@ -9,7 +9,7 @@ type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
   createBusiness(
-    id: ID! @unique
+    id: ID
     zomatoID: String
     name: String!
     url: String
@@ -19,29 +19,15 @@ type Mutation {
     latitude: String
     longitude: String
     price: PriceRange
-    cuisine: [Cuisine]
-    tags: [Tag]
+    hours: String
+    cuisine: Cuisines
+    tags: Tags
     type: BusinessType
   ): Business!
 }
 
-# type Food {
-#   name: String!
-#   location: String
-#   cuisine: Cuisine
-#   hours: String
-#   tags: [Tag]
-# }
-
-# type Drink {
-#   name: String!
-#   location: String
-#   hours: String
-#   tags: [Tag]
-# }
-
 type Business {
-  id: ID! @unique
+  id: ID!
   zomatoID: String
   name: String!
   url: String

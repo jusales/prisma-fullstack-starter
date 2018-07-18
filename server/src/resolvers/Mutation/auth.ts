@@ -32,40 +32,32 @@ export const auth = {
     }
   },
 
-  async createFood(parent, args, ctx: Context, info) {
-    const food = await ctx.db.mutation.createFood(
+  async createBusiness(parent, args, ctx: Context, info) {
+    const business = await ctx.db.mutation.createBusiness(
       {
         data: {
+          zomatoID: args.zomatoID,
           name: args.name,
-          location: args.location,
-          cuisine: args.cuisine,
+          url: args.url,
+          address: args.address,
+          locality: args.locality,
+          city: args.city,
+          latitude: args.latitude,
+          longitude: args.longitude,
+          price: args.price,
+          cuisine: {
+            set: args.cuisine
+          },
           hours: args.hours,
           tags: {
             set: args.tags
-          }
+          },
+          type: args.type
         }
       },
       info
     )
 
-    return food
-  },
-
-  async createDrink(parent, args, ctx: Context, info) {
-    const drink = await ctx.db.mutation.createDrink(
-      {
-        data: {
-          name: args.name,
-          location: args.location,
-          hours: args.hours,
-          tags: {
-            set: args.tags
-          }
-        }
-      },
-      info
-    )
-
-    return drink
+    return business
   }
 }

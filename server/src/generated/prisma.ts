@@ -5,40 +5,51 @@ import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
     users: <T = User[]>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    foods: <T = Food[]>(args: { where?: FoodWhereInput, orderBy?: FoodOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    drinks: <T = Drink[]>(args: { where?: DrinkWhereInput, orderBy?: DrinkOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    businesses: <T = Business[]>(args: { where?: BusinessWhereInput, orderBy?: BusinessOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    cuisineses: <T = Cuisines[]>(args: { where?: CuisinesWhereInput, orderBy?: CuisinesOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    tagses: <T = Tags[]>(args: { where?: TagsWhereInput, orderBy?: TagsOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    business: <T = Business | null>(args: { where: BusinessWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     usersConnection: <T = UserConnection>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    foodsConnection: <T = FoodConnection>(args: { where?: FoodWhereInput, orderBy?: FoodOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    drinksConnection: <T = DrinkConnection>(args: { where?: DrinkWhereInput, orderBy?: DrinkOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    businessesConnection: <T = BusinessConnection>(args: { where?: BusinessWhereInput, orderBy?: BusinessOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    cuisinesesConnection: <T = CuisinesConnection>(args: { where?: CuisinesWhereInput, orderBy?: CuisinesOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    tagsesConnection: <T = TagsConnection>(args: { where?: TagsWhereInput, orderBy?: TagsOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Mutation {
     createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createFood: <T = Food>(args: { data: FoodCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createDrink: <T = Drink>(args: { data: DrinkCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createBusiness: <T = Business>(args: { data: BusinessCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createCuisines: <T = Cuisines>(args: { data: CuisinesCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createTags: <T = Tags>(args: { data: TagsCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateBusiness: <T = Business | null>(args: { data: BusinessUpdateInput, where: BusinessWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteBusiness: <T = Business | null>(args: { where: BusinessWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertBusiness: <T = Business>(args: { where: BusinessWhereUniqueInput, create: BusinessCreateInput, update: BusinessUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateInput, where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyFoods: <T = BatchPayload>(args: { data: FoodUpdateInput, where?: FoodWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyDrinks: <T = BatchPayload>(args: { data: DrinkUpdateInput, where?: DrinkWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBusinesses: <T = BatchPayload>(args: { data: BusinessUpdateInput, where?: BusinessWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyCuisineses: <T = BatchPayload>(args: { data: CuisinesUpdateInput, where?: CuisinesWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyTagses: <T = BatchPayload>(args: { data: TagsUpdateInput, where?: TagsWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyFoods: <T = BatchPayload>(args: { where?: FoodWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyDrinks: <T = BatchPayload>(args: { where?: DrinkWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
+    deleteManyBusinesses: <T = BatchPayload>(args: { where?: BusinessWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyCuisineses: <T = BatchPayload>(args: { where?: CuisinesWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyTagses: <T = BatchPayload>(args: { where?: TagsWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
     user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
-    food: <T = FoodSubscriptionPayload | null>(args: { where?: FoodSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
-    drink: <T = DrinkSubscriptionPayload | null>(args: { where?: DrinkSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> 
+    business: <T = BusinessSubscriptionPayload | null>(args: { where?: BusinessSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
+    cuisines: <T = CuisinesSubscriptionPayload | null>(args: { where?: CuisinesSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
+    tags: <T = TagsSubscriptionPayload | null>(args: { where?: TagsSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> 
   }
 
 export interface Exists {
   User: (where?: UserWhereInput) => Promise<boolean>
-  Food: (where?: FoodWhereInput) => Promise<boolean>
-  Drink: (where?: DrinkWhereInput) => Promise<boolean>
+  Business: (where?: BusinessWhereInput) => Promise<boolean>
+  Cuisines: (where?: CuisinesWhereInput) => Promise<boolean>
+  Tags: (where?: TagsWhereInput) => Promise<boolean>
 }
 
 export interface Prisma {
@@ -63,11 +74,15 @@ export interface BindingConstructor<T> {
  * Type Defs
 */
 
-const typeDefs = `type AggregateDrink {
+const typeDefs = `type AggregateBusiness {
   count: Int!
 }
 
-type AggregateFood {
+type AggregateCuisines {
+  count: Int!
+}
+
+type AggregateTags {
   count: Int!
 }
 
@@ -80,94 +95,120 @@ type BatchPayload {
   count: Long!
 }
 
-enum Cuisine {
-  ITALIAN
-  ASIAN
-  INDIAN
-  MISCELLANEOUS
-  LOCAL
-  VEGAN
-  VEGETARIAN
-  MEDITERRANEAN
-  MEXICAN
-  AMERICAN
-}
-
-type Drink {
+type Business implements Node {
+  id: ID!
+  zomatoID: String
   name: String!
-  location: String
+  url: String
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+  price: PriceRange
   hours: String
-  tags: [Tag!]!
+  cuisine(where: CuisinesWhereInput): Cuisines
+  tags(where: TagsWhereInput): Tags
+  type: BusinessType
 }
 
 """A connection to a list of items."""
-type DrinkConnection {
+type BusinessConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [DrinkEdge]!
-  aggregate: AggregateDrink!
+  edges: [BusinessEdge]!
+  aggregate: AggregateBusiness!
 }
 
-input DrinkCreateInput {
+input BusinessCreateInput {
+  zomatoID: String
   name: String!
-  location: String
+  url: String
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+  price: PriceRange
   hours: String
-  tags: DrinkCreatetagsInput
-}
-
-input DrinkCreatetagsInput {
-  set: [Tag!]
+  type: BusinessType
+  cuisine: CuisinesCreateOneInput
+  tags: TagsCreateOneInput
 }
 
 """An edge in a connection."""
-type DrinkEdge {
+type BusinessEdge {
   """The item at the end of the edge."""
-  node: Drink!
+  node: Business!
 
   """A cursor for use in pagination."""
   cursor: String!
 }
 
-enum DrinkOrderByInput {
-  name_ASC
-  name_DESC
-  location_ASC
-  location_DESC
-  hours_ASC
-  hours_DESC
+enum BusinessOrderByInput {
   id_ASC
   id_DESC
+  zomatoID_ASC
+  zomatoID_DESC
+  name_ASC
+  name_DESC
+  url_ASC
+  url_DESC
+  address_ASC
+  address_DESC
+  locality_ASC
+  locality_DESC
+  city_ASC
+  city_DESC
+  latitude_ASC
+  latitude_DESC
+  longitude_ASC
+  longitude_DESC
+  price_ASC
+  price_DESC
+  hours_ASC
+  hours_DESC
+  type_ASC
+  type_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
 }
 
-type DrinkPreviousValues {
+type BusinessPreviousValues {
+  id: ID!
+  zomatoID: String
   name: String!
-  location: String
+  url: String
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+  price: PriceRange
   hours: String
-  tags: [Tag!]!
+  type: BusinessType
 }
 
-type DrinkSubscriptionPayload {
+type BusinessSubscriptionPayload {
   mutation: MutationType!
-  node: Drink
+  node: Business
   updatedFields: [String!]
-  previousValues: DrinkPreviousValues
+  previousValues: BusinessPreviousValues
 }
 
-input DrinkSubscriptionWhereInput {
+input BusinessSubscriptionWhereInput {
   """Logical AND on all given filters."""
-  AND: [DrinkSubscriptionWhereInput!]
+  AND: [BusinessSubscriptionWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [DrinkSubscriptionWhereInput!]
+  OR: [BusinessSubscriptionWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [DrinkSubscriptionWhereInput!]
+  NOT: [BusinessSubscriptionWhereInput!]
 
   """
   The subscription event gets dispatched when it's listed in mutation_in
@@ -188,29 +229,119 @@ input DrinkSubscriptionWhereInput {
   The subscription event gets only dispatched when some of the field names included in this list have been updated
   """
   updatedFields_contains_some: [String!]
-  node: DrinkWhereInput
+  node: BusinessWhereInput
 }
 
-input DrinkUpdateInput {
+enum BusinessType {
+  BAR
+  RESTAURANT
+}
+
+input BusinessUpdateInput {
+  zomatoID: String
   name: String
-  location: String
+  url: String
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+  price: PriceRange
   hours: String
-  tags: DrinkUpdatetagsInput
+  type: BusinessType
+  cuisine: CuisinesUpdateOneInput
+  tags: TagsUpdateOneInput
 }
 
-input DrinkUpdatetagsInput {
-  set: [Tag!]
-}
-
-input DrinkWhereInput {
+input BusinessWhereInput {
   """Logical AND on all given filters."""
-  AND: [DrinkWhereInput!]
+  AND: [BusinessWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [DrinkWhereInput!]
+  OR: [BusinessWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [DrinkWhereInput!]
+  NOT: [BusinessWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  zomatoID: String
+
+  """All values that are not equal to given value."""
+  zomatoID_not: String
+
+  """All values that are contained in given list."""
+  zomatoID_in: [String!]
+
+  """All values that are not contained in given list."""
+  zomatoID_not_in: [String!]
+
+  """All values less than the given value."""
+  zomatoID_lt: String
+
+  """All values less than or equal the given value."""
+  zomatoID_lte: String
+
+  """All values greater than the given value."""
+  zomatoID_gt: String
+
+  """All values greater than or equal the given value."""
+  zomatoID_gte: String
+
+  """All values containing the given string."""
+  zomatoID_contains: String
+
+  """All values not containing the given string."""
+  zomatoID_not_contains: String
+
+  """All values starting with the given string."""
+  zomatoID_starts_with: String
+
+  """All values not starting with the given string."""
+  zomatoID_not_starts_with: String
+
+  """All values ending with the given string."""
+  zomatoID_ends_with: String
+
+  """All values not ending with the given string."""
+  zomatoID_not_ends_with: String
   name: String
 
   """All values that are not equal to given value."""
@@ -251,46 +382,256 @@ input DrinkWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
-  location: String
+  url: String
 
   """All values that are not equal to given value."""
-  location_not: String
+  url_not: String
 
   """All values that are contained in given list."""
-  location_in: [String!]
+  url_in: [String!]
 
   """All values that are not contained in given list."""
-  location_not_in: [String!]
+  url_not_in: [String!]
 
   """All values less than the given value."""
-  location_lt: String
+  url_lt: String
 
   """All values less than or equal the given value."""
-  location_lte: String
+  url_lte: String
 
   """All values greater than the given value."""
-  location_gt: String
+  url_gt: String
 
   """All values greater than or equal the given value."""
-  location_gte: String
+  url_gte: String
 
   """All values containing the given string."""
-  location_contains: String
+  url_contains: String
 
   """All values not containing the given string."""
-  location_not_contains: String
+  url_not_contains: String
 
   """All values starting with the given string."""
-  location_starts_with: String
+  url_starts_with: String
 
   """All values not starting with the given string."""
-  location_not_starts_with: String
+  url_not_starts_with: String
 
   """All values ending with the given string."""
-  location_ends_with: String
+  url_ends_with: String
 
   """All values not ending with the given string."""
-  location_not_ends_with: String
+  url_not_ends_with: String
+  address: String
+
+  """All values that are not equal to given value."""
+  address_not: String
+
+  """All values that are contained in given list."""
+  address_in: [String!]
+
+  """All values that are not contained in given list."""
+  address_not_in: [String!]
+
+  """All values less than the given value."""
+  address_lt: String
+
+  """All values less than or equal the given value."""
+  address_lte: String
+
+  """All values greater than the given value."""
+  address_gt: String
+
+  """All values greater than or equal the given value."""
+  address_gte: String
+
+  """All values containing the given string."""
+  address_contains: String
+
+  """All values not containing the given string."""
+  address_not_contains: String
+
+  """All values starting with the given string."""
+  address_starts_with: String
+
+  """All values not starting with the given string."""
+  address_not_starts_with: String
+
+  """All values ending with the given string."""
+  address_ends_with: String
+
+  """All values not ending with the given string."""
+  address_not_ends_with: String
+  locality: String
+
+  """All values that are not equal to given value."""
+  locality_not: String
+
+  """All values that are contained in given list."""
+  locality_in: [String!]
+
+  """All values that are not contained in given list."""
+  locality_not_in: [String!]
+
+  """All values less than the given value."""
+  locality_lt: String
+
+  """All values less than or equal the given value."""
+  locality_lte: String
+
+  """All values greater than the given value."""
+  locality_gt: String
+
+  """All values greater than or equal the given value."""
+  locality_gte: String
+
+  """All values containing the given string."""
+  locality_contains: String
+
+  """All values not containing the given string."""
+  locality_not_contains: String
+
+  """All values starting with the given string."""
+  locality_starts_with: String
+
+  """All values not starting with the given string."""
+  locality_not_starts_with: String
+
+  """All values ending with the given string."""
+  locality_ends_with: String
+
+  """All values not ending with the given string."""
+  locality_not_ends_with: String
+  city: String
+
+  """All values that are not equal to given value."""
+  city_not: String
+
+  """All values that are contained in given list."""
+  city_in: [String!]
+
+  """All values that are not contained in given list."""
+  city_not_in: [String!]
+
+  """All values less than the given value."""
+  city_lt: String
+
+  """All values less than or equal the given value."""
+  city_lte: String
+
+  """All values greater than the given value."""
+  city_gt: String
+
+  """All values greater than or equal the given value."""
+  city_gte: String
+
+  """All values containing the given string."""
+  city_contains: String
+
+  """All values not containing the given string."""
+  city_not_contains: String
+
+  """All values starting with the given string."""
+  city_starts_with: String
+
+  """All values not starting with the given string."""
+  city_not_starts_with: String
+
+  """All values ending with the given string."""
+  city_ends_with: String
+
+  """All values not ending with the given string."""
+  city_not_ends_with: String
+  latitude: String
+
+  """All values that are not equal to given value."""
+  latitude_not: String
+
+  """All values that are contained in given list."""
+  latitude_in: [String!]
+
+  """All values that are not contained in given list."""
+  latitude_not_in: [String!]
+
+  """All values less than the given value."""
+  latitude_lt: String
+
+  """All values less than or equal the given value."""
+  latitude_lte: String
+
+  """All values greater than the given value."""
+  latitude_gt: String
+
+  """All values greater than or equal the given value."""
+  latitude_gte: String
+
+  """All values containing the given string."""
+  latitude_contains: String
+
+  """All values not containing the given string."""
+  latitude_not_contains: String
+
+  """All values starting with the given string."""
+  latitude_starts_with: String
+
+  """All values not starting with the given string."""
+  latitude_not_starts_with: String
+
+  """All values ending with the given string."""
+  latitude_ends_with: String
+
+  """All values not ending with the given string."""
+  latitude_not_ends_with: String
+  longitude: String
+
+  """All values that are not equal to given value."""
+  longitude_not: String
+
+  """All values that are contained in given list."""
+  longitude_in: [String!]
+
+  """All values that are not contained in given list."""
+  longitude_not_in: [String!]
+
+  """All values less than the given value."""
+  longitude_lt: String
+
+  """All values less than or equal the given value."""
+  longitude_lte: String
+
+  """All values greater than the given value."""
+  longitude_gt: String
+
+  """All values greater than or equal the given value."""
+  longitude_gte: String
+
+  """All values containing the given string."""
+  longitude_contains: String
+
+  """All values not containing the given string."""
+  longitude_not_contains: String
+
+  """All values starting with the given string."""
+  longitude_starts_with: String
+
+  """All values not starting with the given string."""
+  longitude_not_starts_with: String
+
+  """All values ending with the given string."""
+  longitude_ends_with: String
+
+  """All values not ending with the given string."""
+  longitude_not_ends_with: String
+  price: PriceRange
+
+  """All values that are not equal to given value."""
+  price_not: PriceRange
+
+  """All values that are contained in given list."""
+  price_in: [PriceRange!]
+
+  """All values that are not contained in given list."""
+  price_not_in: [PriceRange!]
   hours: String
 
   """All values that are not equal to given value."""
@@ -331,56 +672,94 @@ input DrinkWhereInput {
 
   """All values not ending with the given string."""
   hours_not_ends_with: String
+  type: BusinessType
+
+  """All values that are not equal to given value."""
+  type_not: BusinessType
+
+  """All values that are contained in given list."""
+  type_in: [BusinessType!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [BusinessType!]
+  cuisine: CuisinesWhereInput
+  tags: TagsWhereInput
 }
 
-type Food {
-  name: String!
-  location: String
-  cuisine: Cuisine
-  hours: String
-  tags: [Tag!]!
+input BusinessWhereUniqueInput {
+  id: ID
+}
+
+type Cuisines {
+  ITALIAN: Boolean!
+  ASIAN: Boolean!
+  INDIAN: Boolean!
+  MISCELLANEOUS: Boolean!
+  LOCAL: Boolean!
+  VEGAN: Boolean!
+  VEGETARIAN: Boolean!
+  MEDITERRANEAN: Boolean!
+  MEXICAN: Boolean!
+  AMERICAN: Boolean!
 }
 
 """A connection to a list of items."""
-type FoodConnection {
+type CuisinesConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [FoodEdge]!
-  aggregate: AggregateFood!
+  edges: [CuisinesEdge]!
+  aggregate: AggregateCuisines!
 }
 
-input FoodCreateInput {
-  name: String!
-  location: String
-  cuisine: Cuisine
-  hours: String
-  tags: FoodCreatetagsInput
+input CuisinesCreateInput {
+  ITALIAN: Boolean
+  ASIAN: Boolean
+  INDIAN: Boolean
+  MISCELLANEOUS: Boolean
+  LOCAL: Boolean
+  VEGAN: Boolean
+  VEGETARIAN: Boolean
+  MEDITERRANEAN: Boolean
+  MEXICAN: Boolean
+  AMERICAN: Boolean
 }
 
-input FoodCreatetagsInput {
-  set: [Tag!]
+input CuisinesCreateOneInput {
+  create: CuisinesCreateInput
 }
 
 """An edge in a connection."""
-type FoodEdge {
+type CuisinesEdge {
   """The item at the end of the edge."""
-  node: Food!
+  node: Cuisines!
 
   """A cursor for use in pagination."""
   cursor: String!
 }
 
-enum FoodOrderByInput {
-  name_ASC
-  name_DESC
-  location_ASC
-  location_DESC
-  cuisine_ASC
-  cuisine_DESC
-  hours_ASC
-  hours_DESC
+enum CuisinesOrderByInput {
+  ITALIAN_ASC
+  ITALIAN_DESC
+  ASIAN_ASC
+  ASIAN_DESC
+  INDIAN_ASC
+  INDIAN_DESC
+  MISCELLANEOUS_ASC
+  MISCELLANEOUS_DESC
+  LOCAL_ASC
+  LOCAL_DESC
+  VEGAN_ASC
+  VEGAN_DESC
+  VEGETARIAN_ASC
+  VEGETARIAN_DESC
+  MEDITERRANEAN_ASC
+  MEDITERRANEAN_DESC
+  MEXICAN_ASC
+  MEXICAN_DESC
+  AMERICAN_ASC
+  AMERICAN_DESC
   id_ASC
   id_DESC
   updatedAt_ASC
@@ -389,30 +768,35 @@ enum FoodOrderByInput {
   createdAt_DESC
 }
 
-type FoodPreviousValues {
-  name: String!
-  location: String
-  cuisine: Cuisine
-  hours: String
-  tags: [Tag!]!
+type CuisinesPreviousValues {
+  ITALIAN: Boolean!
+  ASIAN: Boolean!
+  INDIAN: Boolean!
+  MISCELLANEOUS: Boolean!
+  LOCAL: Boolean!
+  VEGAN: Boolean!
+  VEGETARIAN: Boolean!
+  MEDITERRANEAN: Boolean!
+  MEXICAN: Boolean!
+  AMERICAN: Boolean!
 }
 
-type FoodSubscriptionPayload {
+type CuisinesSubscriptionPayload {
   mutation: MutationType!
-  node: Food
+  node: Cuisines
   updatedFields: [String!]
-  previousValues: FoodPreviousValues
+  previousValues: CuisinesPreviousValues
 }
 
-input FoodSubscriptionWhereInput {
+input CuisinesSubscriptionWhereInput {
   """Logical AND on all given filters."""
-  AND: [FoodSubscriptionWhereInput!]
+  AND: [CuisinesSubscriptionWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [FoodSubscriptionWhereInput!]
+  OR: [CuisinesSubscriptionWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [FoodSubscriptionWhereInput!]
+  NOT: [CuisinesSubscriptionWhereInput!]
 
   """
   The subscription event gets dispatched when it's listed in mutation_in
@@ -433,160 +817,100 @@ input FoodSubscriptionWhereInput {
   The subscription event gets only dispatched when some of the field names included in this list have been updated
   """
   updatedFields_contains_some: [String!]
-  node: FoodWhereInput
+  node: CuisinesWhereInput
 }
 
-input FoodUpdateInput {
-  name: String
-  location: String
-  cuisine: Cuisine
-  hours: String
-  tags: FoodUpdatetagsInput
+input CuisinesUpdateDataInput {
+  ITALIAN: Boolean
+  ASIAN: Boolean
+  INDIAN: Boolean
+  MISCELLANEOUS: Boolean
+  LOCAL: Boolean
+  VEGAN: Boolean
+  VEGETARIAN: Boolean
+  MEDITERRANEAN: Boolean
+  MEXICAN: Boolean
+  AMERICAN: Boolean
 }
 
-input FoodUpdatetagsInput {
-  set: [Tag!]
+input CuisinesUpdateInput {
+  ITALIAN: Boolean
+  ASIAN: Boolean
+  INDIAN: Boolean
+  MISCELLANEOUS: Boolean
+  LOCAL: Boolean
+  VEGAN: Boolean
+  VEGETARIAN: Boolean
+  MEDITERRANEAN: Boolean
+  MEXICAN: Boolean
+  AMERICAN: Boolean
 }
 
-input FoodWhereInput {
+input CuisinesUpdateOneInput {
+  create: CuisinesCreateInput
+  disconnect: Boolean
+  delete: Boolean
+  update: CuisinesUpdateDataInput
+  upsert: CuisinesUpsertNestedInput
+}
+
+input CuisinesUpsertNestedInput {
+  update: CuisinesUpdateDataInput!
+  create: CuisinesCreateInput!
+}
+
+input CuisinesWhereInput {
   """Logical AND on all given filters."""
-  AND: [FoodWhereInput!]
+  AND: [CuisinesWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [FoodWhereInput!]
+  OR: [CuisinesWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [FoodWhereInput!]
-  name: String
+  NOT: [CuisinesWhereInput!]
+  ITALIAN: Boolean
 
   """All values that are not equal to given value."""
-  name_not: String
-
-  """All values that are contained in given list."""
-  name_in: [String!]
-
-  """All values that are not contained in given list."""
-  name_not_in: [String!]
-
-  """All values less than the given value."""
-  name_lt: String
-
-  """All values less than or equal the given value."""
-  name_lte: String
-
-  """All values greater than the given value."""
-  name_gt: String
-
-  """All values greater than or equal the given value."""
-  name_gte: String
-
-  """All values containing the given string."""
-  name_contains: String
-
-  """All values not containing the given string."""
-  name_not_contains: String
-
-  """All values starting with the given string."""
-  name_starts_with: String
-
-  """All values not starting with the given string."""
-  name_not_starts_with: String
-
-  """All values ending with the given string."""
-  name_ends_with: String
-
-  """All values not ending with the given string."""
-  name_not_ends_with: String
-  location: String
+  ITALIAN_not: Boolean
+  ASIAN: Boolean
 
   """All values that are not equal to given value."""
-  location_not: String
-
-  """All values that are contained in given list."""
-  location_in: [String!]
-
-  """All values that are not contained in given list."""
-  location_not_in: [String!]
-
-  """All values less than the given value."""
-  location_lt: String
-
-  """All values less than or equal the given value."""
-  location_lte: String
-
-  """All values greater than the given value."""
-  location_gt: String
-
-  """All values greater than or equal the given value."""
-  location_gte: String
-
-  """All values containing the given string."""
-  location_contains: String
-
-  """All values not containing the given string."""
-  location_not_contains: String
-
-  """All values starting with the given string."""
-  location_starts_with: String
-
-  """All values not starting with the given string."""
-  location_not_starts_with: String
-
-  """All values ending with the given string."""
-  location_ends_with: String
-
-  """All values not ending with the given string."""
-  location_not_ends_with: String
-  cuisine: Cuisine
+  ASIAN_not: Boolean
+  INDIAN: Boolean
 
   """All values that are not equal to given value."""
-  cuisine_not: Cuisine
-
-  """All values that are contained in given list."""
-  cuisine_in: [Cuisine!]
-
-  """All values that are not contained in given list."""
-  cuisine_not_in: [Cuisine!]
-  hours: String
+  INDIAN_not: Boolean
+  MISCELLANEOUS: Boolean
 
   """All values that are not equal to given value."""
-  hours_not: String
+  MISCELLANEOUS_not: Boolean
+  LOCAL: Boolean
 
-  """All values that are contained in given list."""
-  hours_in: [String!]
+  """All values that are not equal to given value."""
+  LOCAL_not: Boolean
+  VEGAN: Boolean
 
-  """All values that are not contained in given list."""
-  hours_not_in: [String!]
+  """All values that are not equal to given value."""
+  VEGAN_not: Boolean
+  VEGETARIAN: Boolean
 
-  """All values less than the given value."""
-  hours_lt: String
+  """All values that are not equal to given value."""
+  VEGETARIAN_not: Boolean
+  MEDITERRANEAN: Boolean
 
-  """All values less than or equal the given value."""
-  hours_lte: String
+  """All values that are not equal to given value."""
+  MEDITERRANEAN_not: Boolean
+  MEXICAN: Boolean
 
-  """All values greater than the given value."""
-  hours_gt: String
+  """All values that are not equal to given value."""
+  MEXICAN_not: Boolean
+  AMERICAN: Boolean
 
-  """All values greater than or equal the given value."""
-  hours_gte: String
-
-  """All values containing the given string."""
-  hours_contains: String
-
-  """All values not containing the given string."""
-  hours_not_contains: String
-
-  """All values starting with the given string."""
-  hours_starts_with: String
-
-  """All values not starting with the given string."""
-  hours_not_starts_with: String
-
-  """All values ending with the given string."""
-  hours_ends_with: String
-
-  """All values not ending with the given string."""
-  hours_not_ends_with: String
+  """All values that are not equal to given value."""
+  AMERICAN_not: Boolean
+  _MagicalBackRelation_BusinessToCuisines_every: BusinessWhereInput
+  _MagicalBackRelation_BusinessToCuisines_some: BusinessWhereInput
+  _MagicalBackRelation_BusinessToCuisines_none: BusinessWhereInput
 }
 
 """
@@ -597,17 +921,23 @@ scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
-  createFood(data: FoodCreateInput!): Food!
-  createDrink(data: DrinkCreateInput!): Drink!
+  createBusiness(data: BusinessCreateInput!): Business!
+  createCuisines(data: CuisinesCreateInput!): Cuisines!
+  createTags(data: TagsCreateInput!): Tags!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateBusiness(data: BusinessUpdateInput!, where: BusinessWhereUniqueInput!): Business
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteBusiness(where: BusinessWhereUniqueInput!): Business
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertBusiness(where: BusinessWhereUniqueInput!, create: BusinessCreateInput!, update: BusinessUpdateInput!): Business!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
-  updateManyFoods(data: FoodUpdateInput!, where: FoodWhereInput): BatchPayload!
-  updateManyDrinks(data: DrinkUpdateInput!, where: DrinkWhereInput): BatchPayload!
+  updateManyBusinesses(data: BusinessUpdateInput!, where: BusinessWhereInput): BatchPayload!
+  updateManyCuisineses(data: CuisinesUpdateInput!, where: CuisinesWhereInput): BatchPayload!
+  updateManyTagses(data: TagsUpdateInput!, where: TagsWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyFoods(where: FoodWhereInput): BatchPayload!
-  deleteManyDrinks(where: DrinkWhereInput): BatchPayload!
+  deleteManyBusinesses(where: BusinessWhereInput): BatchPayload!
+  deleteManyCuisineses(where: CuisinesWhereInput): BatchPayload!
+  deleteManyTagses(where: TagsWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -637,14 +967,25 @@ type PageInfo {
   endCursor: String
 }
 
+enum PriceRange {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+}
+
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  foods(where: FoodWhereInput, orderBy: FoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Food]!
-  drinks(where: DrinkWhereInput, orderBy: DrinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Drink]!
+  businesses(where: BusinessWhereInput, orderBy: BusinessOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Business]!
+  cuisineses(where: CuisinesWhereInput, orderBy: CuisinesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Cuisines]!
+  tagses(where: TagsWhereInput, orderBy: TagsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tags]!
   user(where: UserWhereUniqueInput!): User
+  business(where: BusinessWhereUniqueInput!): Business
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  foodsConnection(where: FoodWhereInput, orderBy: FoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FoodConnection!
-  drinksConnection(where: DrinkWhereInput, orderBy: DrinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DrinkConnection!
+  businessesConnection(where: BusinessWhereInput, orderBy: BusinessOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BusinessConnection!
+  cuisinesesConnection(where: CuisinesWhereInput, orderBy: CuisinesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CuisinesConnection!
+  tagsesConnection(where: TagsWhereInput, orderBy: TagsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TagsConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -655,16 +996,177 @@ type Query {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  food(where: FoodSubscriptionWhereInput): FoodSubscriptionPayload
-  drink(where: DrinkSubscriptionWhereInput): DrinkSubscriptionPayload
+  business(where: BusinessSubscriptionWhereInput): BusinessSubscriptionPayload
+  cuisines(where: CuisinesSubscriptionWhereInput): CuisinesSubscriptionPayload
+  tags(where: TagsSubscriptionWhereInput): TagsSubscriptionPayload
 }
 
-enum Tag {
-  BREAKFAST
-  LUNCH
-  DINNER
-  BRUNCH
-  DESSERT
+type Tags {
+  BREAKFAST: Boolean!
+  LUNCH: Boolean!
+  DINNER: Boolean!
+  BRUNCH: Boolean!
+  DESSERT: Boolean!
+}
+
+"""A connection to a list of items."""
+type TagsConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TagsEdge]!
+  aggregate: AggregateTags!
+}
+
+input TagsCreateInput {
+  BREAKFAST: Boolean
+  LUNCH: Boolean
+  DINNER: Boolean
+  BRUNCH: Boolean
+  DESSERT: Boolean
+}
+
+input TagsCreateOneInput {
+  create: TagsCreateInput
+}
+
+"""An edge in a connection."""
+type TagsEdge {
+  """The item at the end of the edge."""
+  node: Tags!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum TagsOrderByInput {
+  BREAKFAST_ASC
+  BREAKFAST_DESC
+  LUNCH_ASC
+  LUNCH_DESC
+  DINNER_ASC
+  DINNER_DESC
+  BRUNCH_ASC
+  BRUNCH_DESC
+  DESSERT_ASC
+  DESSERT_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type TagsPreviousValues {
+  BREAKFAST: Boolean!
+  LUNCH: Boolean!
+  DINNER: Boolean!
+  BRUNCH: Boolean!
+  DESSERT: Boolean!
+}
+
+type TagsSubscriptionPayload {
+  mutation: MutationType!
+  node: Tags
+  updatedFields: [String!]
+  previousValues: TagsPreviousValues
+}
+
+input TagsSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TagsSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TagsSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TagsSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: TagsWhereInput
+}
+
+input TagsUpdateDataInput {
+  BREAKFAST: Boolean
+  LUNCH: Boolean
+  DINNER: Boolean
+  BRUNCH: Boolean
+  DESSERT: Boolean
+}
+
+input TagsUpdateInput {
+  BREAKFAST: Boolean
+  LUNCH: Boolean
+  DINNER: Boolean
+  BRUNCH: Boolean
+  DESSERT: Boolean
+}
+
+input TagsUpdateOneInput {
+  create: TagsCreateInput
+  disconnect: Boolean
+  delete: Boolean
+  update: TagsUpdateDataInput
+  upsert: TagsUpsertNestedInput
+}
+
+input TagsUpsertNestedInput {
+  update: TagsUpdateDataInput!
+  create: TagsCreateInput!
+}
+
+input TagsWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TagsWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TagsWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TagsWhereInput!]
+  BREAKFAST: Boolean
+
+  """All values that are not equal to given value."""
+  BREAKFAST_not: Boolean
+  LUNCH: Boolean
+
+  """All values that are not equal to given value."""
+  LUNCH_not: Boolean
+  DINNER: Boolean
+
+  """All values that are not equal to given value."""
+  DINNER_not: Boolean
+  BRUNCH: Boolean
+
+  """All values that are not equal to given value."""
+  BRUNCH_not: Boolean
+  DESSERT: Boolean
+
+  """All values that are not equal to given value."""
+  DESSERT_not: Boolean
+  _MagicalBackRelation_BusinessToTags_every: BusinessWhereInput
+  _MagicalBackRelation_BusinessToTags_some: BusinessWhereInput
+  _MagicalBackRelation_BusinessToTags_none: BusinessWhereInput
 }
 
 type User implements Node {
@@ -949,41 +1451,74 @@ export const Prisma = makePrismaBindingClass<BindingConstructor<Prisma>>({typeDe
  * Types
 */
 
-export type Cuisine =   'ITALIAN' |
-  'ASIAN' |
-  'INDIAN' |
-  'MISCELLANEOUS' |
-  'LOCAL' |
-  'VEGAN' |
-  'VEGETARIAN' |
-  'MEDITERRANEAN' |
-  'MEXICAN' |
-  'AMERICAN'
+export type PriceRange =   'ONE' |
+  'TWO' |
+  'THREE' |
+  'FOUR' |
+  'FIVE'
 
-export type FoodOrderByInput =   'name_ASC' |
+export type BusinessType =   'BAR' |
+  'RESTAURANT'
+
+export type MutationType =   'CREATED' |
+  'UPDATED' |
+  'DELETED'
+
+export type BusinessOrderByInput =   'id_ASC' |
+  'id_DESC' |
+  'zomatoID_ASC' |
+  'zomatoID_DESC' |
+  'name_ASC' |
   'name_DESC' |
-  'location_ASC' |
-  'location_DESC' |
-  'cuisine_ASC' |
-  'cuisine_DESC' |
+  'url_ASC' |
+  'url_DESC' |
+  'address_ASC' |
+  'address_DESC' |
+  'locality_ASC' |
+  'locality_DESC' |
+  'city_ASC' |
+  'city_DESC' |
+  'latitude_ASC' |
+  'latitude_DESC' |
+  'longitude_ASC' |
+  'longitude_DESC' |
+  'price_ASC' |
+  'price_DESC' |
   'hours_ASC' |
   'hours_DESC' |
+  'type_ASC' |
+  'type_DESC' |
+  'updatedAt_ASC' |
+  'updatedAt_DESC' |
+  'createdAt_ASC' |
+  'createdAt_DESC'
+
+export type CuisinesOrderByInput =   'ITALIAN_ASC' |
+  'ITALIAN_DESC' |
+  'ASIAN_ASC' |
+  'ASIAN_DESC' |
+  'INDIAN_ASC' |
+  'INDIAN_DESC' |
+  'MISCELLANEOUS_ASC' |
+  'MISCELLANEOUS_DESC' |
+  'LOCAL_ASC' |
+  'LOCAL_DESC' |
+  'VEGAN_ASC' |
+  'VEGAN_DESC' |
+  'VEGETARIAN_ASC' |
+  'VEGETARIAN_DESC' |
+  'MEDITERRANEAN_ASC' |
+  'MEDITERRANEAN_DESC' |
+  'MEXICAN_ASC' |
+  'MEXICAN_DESC' |
+  'AMERICAN_ASC' |
+  'AMERICAN_DESC' |
   'id_ASC' |
   'id_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
   'createdAt_DESC'
-
-export type MutationType =   'CREATED' |
-  'UPDATED' |
-  'DELETED'
-
-export type Tag =   'BREAKFAST' |
-  'LUNCH' |
-  'DINNER' |
-  'BRUNCH' |
-  'DESSERT'
 
 export type UserOrderByInput =   'id_ASC' |
   'id_DESC' |
@@ -998,12 +1533,16 @@ export type UserOrderByInput =   'id_ASC' |
   'createdAt_ASC' |
   'createdAt_DESC'
 
-export type DrinkOrderByInput =   'name_ASC' |
-  'name_DESC' |
-  'location_ASC' |
-  'location_DESC' |
-  'hours_ASC' |
-  'hours_DESC' |
+export type TagsOrderByInput =   'BREAKFAST_ASC' |
+  'BREAKFAST_DESC' |
+  'LUNCH_ASC' |
+  'LUNCH_DESC' |
+  'DINNER_ASC' |
+  'DINNER_DESC' |
+  'BRUNCH_ASC' |
+  'BRUNCH_DESC' |
+  'DESSERT_ASC' |
+  'DESSERT_DESC' |
   'id_ASC' |
   'id_DESC' |
   'updatedAt_ASC' |
@@ -1017,11 +1556,12 @@ export interface UserCreateInput {
   password: String
 }
 
-export interface DrinkUpdateInput {
-  name?: String
-  location?: String
-  hours?: String
-  tags?: DrinkUpdatetagsInput
+export interface TagsUpdateDataInput {
+  BREAKFAST?: Boolean
+  LUNCH?: Boolean
+  DINNER?: Boolean
+  BRUNCH?: Boolean
+  DESSERT?: Boolean
 }
 
 export interface UserWhereInput {
@@ -1086,14 +1626,46 @@ export interface UserWhereInput {
   password_not_ends_with?: String
 }
 
-export interface FoodUpdatetagsInput {
-  set?: Tag[] | Tag
+export interface TagsUpdateOneInput {
+  create?: TagsCreateInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: TagsUpdateDataInput
+  upsert?: TagsUpsertNestedInput
 }
 
-export interface FoodWhereInput {
-  AND?: FoodWhereInput[] | FoodWhereInput
-  OR?: FoodWhereInput[] | FoodWhereInput
-  NOT?: FoodWhereInput[] | FoodWhereInput
+export interface BusinessWhereInput {
+  AND?: BusinessWhereInput[] | BusinessWhereInput
+  OR?: BusinessWhereInput[] | BusinessWhereInput
+  NOT?: BusinessWhereInput[] | BusinessWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  zomatoID?: String
+  zomatoID_not?: String
+  zomatoID_in?: String[] | String
+  zomatoID_not_in?: String[] | String
+  zomatoID_lt?: String
+  zomatoID_lte?: String
+  zomatoID_gt?: String
+  zomatoID_gte?: String
+  zomatoID_contains?: String
+  zomatoID_not_contains?: String
+  zomatoID_starts_with?: String
+  zomatoID_not_starts_with?: String
+  zomatoID_ends_with?: String
+  zomatoID_not_ends_with?: String
   name?: String
   name_not?: String
   name_in?: String[] | String
@@ -1108,24 +1680,94 @@ export interface FoodWhereInput {
   name_not_starts_with?: String
   name_ends_with?: String
   name_not_ends_with?: String
-  location?: String
-  location_not?: String
-  location_in?: String[] | String
-  location_not_in?: String[] | String
-  location_lt?: String
-  location_lte?: String
-  location_gt?: String
-  location_gte?: String
-  location_contains?: String
-  location_not_contains?: String
-  location_starts_with?: String
-  location_not_starts_with?: String
-  location_ends_with?: String
-  location_not_ends_with?: String
-  cuisine?: Cuisine
-  cuisine_not?: Cuisine
-  cuisine_in?: Cuisine[] | Cuisine
-  cuisine_not_in?: Cuisine[] | Cuisine
+  url?: String
+  url_not?: String
+  url_in?: String[] | String
+  url_not_in?: String[] | String
+  url_lt?: String
+  url_lte?: String
+  url_gt?: String
+  url_gte?: String
+  url_contains?: String
+  url_not_contains?: String
+  url_starts_with?: String
+  url_not_starts_with?: String
+  url_ends_with?: String
+  url_not_ends_with?: String
+  address?: String
+  address_not?: String
+  address_in?: String[] | String
+  address_not_in?: String[] | String
+  address_lt?: String
+  address_lte?: String
+  address_gt?: String
+  address_gte?: String
+  address_contains?: String
+  address_not_contains?: String
+  address_starts_with?: String
+  address_not_starts_with?: String
+  address_ends_with?: String
+  address_not_ends_with?: String
+  locality?: String
+  locality_not?: String
+  locality_in?: String[] | String
+  locality_not_in?: String[] | String
+  locality_lt?: String
+  locality_lte?: String
+  locality_gt?: String
+  locality_gte?: String
+  locality_contains?: String
+  locality_not_contains?: String
+  locality_starts_with?: String
+  locality_not_starts_with?: String
+  locality_ends_with?: String
+  locality_not_ends_with?: String
+  city?: String
+  city_not?: String
+  city_in?: String[] | String
+  city_not_in?: String[] | String
+  city_lt?: String
+  city_lte?: String
+  city_gt?: String
+  city_gte?: String
+  city_contains?: String
+  city_not_contains?: String
+  city_starts_with?: String
+  city_not_starts_with?: String
+  city_ends_with?: String
+  city_not_ends_with?: String
+  latitude?: String
+  latitude_not?: String
+  latitude_in?: String[] | String
+  latitude_not_in?: String[] | String
+  latitude_lt?: String
+  latitude_lte?: String
+  latitude_gt?: String
+  latitude_gte?: String
+  latitude_contains?: String
+  latitude_not_contains?: String
+  latitude_starts_with?: String
+  latitude_not_starts_with?: String
+  latitude_ends_with?: String
+  latitude_not_ends_with?: String
+  longitude?: String
+  longitude_not?: String
+  longitude_in?: String[] | String
+  longitude_not_in?: String[] | String
+  longitude_lt?: String
+  longitude_lte?: String
+  longitude_gt?: String
+  longitude_gte?: String
+  longitude_contains?: String
+  longitude_not_contains?: String
+  longitude_starts_with?: String
+  longitude_not_starts_with?: String
+  longitude_ends_with?: String
+  longitude_not_ends_with?: String
+  price?: PriceRange
+  price_not?: PriceRange
+  price_in?: PriceRange[] | PriceRange
+  price_not_in?: PriceRange[] | PriceRange
   hours?: String
   hours_not?: String
   hours_in?: String[] | String
@@ -1140,14 +1782,164 @@ export interface FoodWhereInput {
   hours_not_starts_with?: String
   hours_ends_with?: String
   hours_not_ends_with?: String
+  type?: BusinessType
+  type_not?: BusinessType
+  type_in?: BusinessType[] | BusinessType
+  type_not_in?: BusinessType[] | BusinessType
+  cuisine?: CuisinesWhereInput
+  tags?: TagsWhereInput
 }
 
-export interface FoodUpdateInput {
+export interface CuisinesUpsertNestedInput {
+  update: CuisinesUpdateDataInput
+  create: CuisinesCreateInput
+}
+
+export interface BusinessSubscriptionWhereInput {
+  AND?: BusinessSubscriptionWhereInput[] | BusinessSubscriptionWhereInput
+  OR?: BusinessSubscriptionWhereInput[] | BusinessSubscriptionWhereInput
+  NOT?: BusinessSubscriptionWhereInput[] | BusinessSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: BusinessWhereInput
+}
+
+export interface CuisinesUpdateDataInput {
+  ITALIAN?: Boolean
+  ASIAN?: Boolean
+  INDIAN?: Boolean
+  MISCELLANEOUS?: Boolean
+  LOCAL?: Boolean
+  VEGAN?: Boolean
+  VEGETARIAN?: Boolean
+  MEDITERRANEAN?: Boolean
+  MEXICAN?: Boolean
+  AMERICAN?: Boolean
+}
+
+export interface TagsUpdateInput {
+  BREAKFAST?: Boolean
+  LUNCH?: Boolean
+  DINNER?: Boolean
+  BRUNCH?: Boolean
+  DESSERT?: Boolean
+}
+
+export interface CuisinesUpdateOneInput {
+  create?: CuisinesCreateInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: CuisinesUpdateDataInput
+  upsert?: CuisinesUpsertNestedInput
+}
+
+export interface CuisinesSubscriptionWhereInput {
+  AND?: CuisinesSubscriptionWhereInput[] | CuisinesSubscriptionWhereInput
+  OR?: CuisinesSubscriptionWhereInput[] | CuisinesSubscriptionWhereInput
+  NOT?: CuisinesSubscriptionWhereInput[] | CuisinesSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: CuisinesWhereInput
+}
+
+export interface BusinessUpdateInput {
+  zomatoID?: String
   name?: String
-  location?: String
-  cuisine?: Cuisine
+  url?: String
+  address?: String
+  locality?: String
+  city?: String
+  latitude?: String
+  longitude?: String
+  price?: PriceRange
   hours?: String
-  tags?: FoodUpdatetagsInput
+  type?: BusinessType
+  cuisine?: CuisinesUpdateOneInput
+  tags?: TagsUpdateOneInput
+}
+
+export interface UserWhereUniqueInput {
+  id?: ID_Input
+  email?: String
+}
+
+export interface UserUpdateInput {
+  name?: String
+  email?: String
+  password?: String
+}
+
+export interface TagsUpsertNestedInput {
+  update: TagsUpdateDataInput
+  create: TagsCreateInput
+}
+
+export interface TagsCreateInput {
+  BREAKFAST?: Boolean
+  LUNCH?: Boolean
+  DINNER?: Boolean
+  BRUNCH?: Boolean
+  DESSERT?: Boolean
+}
+
+export interface TagsWhereInput {
+  AND?: TagsWhereInput[] | TagsWhereInput
+  OR?: TagsWhereInput[] | TagsWhereInput
+  NOT?: TagsWhereInput[] | TagsWhereInput
+  BREAKFAST?: Boolean
+  BREAKFAST_not?: Boolean
+  LUNCH?: Boolean
+  LUNCH_not?: Boolean
+  DINNER?: Boolean
+  DINNER_not?: Boolean
+  BRUNCH?: Boolean
+  BRUNCH_not?: Boolean
+  DESSERT?: Boolean
+  DESSERT_not?: Boolean
+  _MagicalBackRelation_BusinessToTags_every?: BusinessWhereInput
+  _MagicalBackRelation_BusinessToTags_some?: BusinessWhereInput
+  _MagicalBackRelation_BusinessToTags_none?: BusinessWhereInput
+}
+
+export interface BusinessCreateInput {
+  zomatoID?: String
+  name: String
+  url?: String
+  address?: String
+  locality?: String
+  city?: String
+  latitude?: String
+  longitude?: String
+  price?: PriceRange
+  hours?: String
+  type?: BusinessType
+  cuisine?: CuisinesCreateOneInput
+  tags?: TagsCreateOneInput
+}
+
+export interface CuisinesCreateOneInput {
+  create?: CuisinesCreateInput
+}
+
+export interface CuisinesCreateInput {
+  ITALIAN?: Boolean
+  ASIAN?: Boolean
+  INDIAN?: Boolean
+  MISCELLANEOUS?: Boolean
+  LOCAL?: Boolean
+  VEGAN?: Boolean
+  VEGETARIAN?: Boolean
+  MEDITERRANEAN?: Boolean
+  MEXICAN?: Boolean
+  AMERICAN?: Boolean
+}
+
+export interface TagsCreateOneInput {
+  create?: TagsCreateInput
 }
 
 export interface UserSubscriptionWhereInput {
@@ -1161,112 +1953,61 @@ export interface UserSubscriptionWhereInput {
   node?: UserWhereInput
 }
 
-export interface UserUpdateInput {
-  name?: String
-  email?: String
-  password?: String
+export interface CuisinesWhereInput {
+  AND?: CuisinesWhereInput[] | CuisinesWhereInput
+  OR?: CuisinesWhereInput[] | CuisinesWhereInput
+  NOT?: CuisinesWhereInput[] | CuisinesWhereInput
+  ITALIAN?: Boolean
+  ITALIAN_not?: Boolean
+  ASIAN?: Boolean
+  ASIAN_not?: Boolean
+  INDIAN?: Boolean
+  INDIAN_not?: Boolean
+  MISCELLANEOUS?: Boolean
+  MISCELLANEOUS_not?: Boolean
+  LOCAL?: Boolean
+  LOCAL_not?: Boolean
+  VEGAN?: Boolean
+  VEGAN_not?: Boolean
+  VEGETARIAN?: Boolean
+  VEGETARIAN_not?: Boolean
+  MEDITERRANEAN?: Boolean
+  MEDITERRANEAN_not?: Boolean
+  MEXICAN?: Boolean
+  MEXICAN_not?: Boolean
+  AMERICAN?: Boolean
+  AMERICAN_not?: Boolean
+  _MagicalBackRelation_BusinessToCuisines_every?: BusinessWhereInput
+  _MagicalBackRelation_BusinessToCuisines_some?: BusinessWhereInput
+  _MagicalBackRelation_BusinessToCuisines_none?: BusinessWhereInput
 }
 
-export interface DrinkWhereInput {
-  AND?: DrinkWhereInput[] | DrinkWhereInput
-  OR?: DrinkWhereInput[] | DrinkWhereInput
-  NOT?: DrinkWhereInput[] | DrinkWhereInput
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  location?: String
-  location_not?: String
-  location_in?: String[] | String
-  location_not_in?: String[] | String
-  location_lt?: String
-  location_lte?: String
-  location_gt?: String
-  location_gte?: String
-  location_contains?: String
-  location_not_contains?: String
-  location_starts_with?: String
-  location_not_starts_with?: String
-  location_ends_with?: String
-  location_not_ends_with?: String
-  hours?: String
-  hours_not?: String
-  hours_in?: String[] | String
-  hours_not_in?: String[] | String
-  hours_lt?: String
-  hours_lte?: String
-  hours_gt?: String
-  hours_gte?: String
-  hours_contains?: String
-  hours_not_contains?: String
-  hours_starts_with?: String
-  hours_not_starts_with?: String
-  hours_ends_with?: String
-  hours_not_ends_with?: String
-}
-
-export interface DrinkUpdatetagsInput {
-  set?: Tag[] | Tag
-}
-
-export interface FoodCreateInput {
-  name: String
-  location?: String
-  cuisine?: Cuisine
-  hours?: String
-  tags?: FoodCreatetagsInput
-}
-
-export interface FoodCreatetagsInput {
-  set?: Tag[] | Tag
-}
-
-export interface DrinkCreateInput {
-  name: String
-  location?: String
-  hours?: String
-  tags?: DrinkCreatetagsInput
-}
-
-export interface DrinkCreatetagsInput {
-  set?: Tag[] | Tag
-}
-
-export interface UserWhereUniqueInput {
+export interface BusinessWhereUniqueInput {
   id?: ID_Input
-  email?: String
 }
 
-export interface DrinkSubscriptionWhereInput {
-  AND?: DrinkSubscriptionWhereInput[] | DrinkSubscriptionWhereInput
-  OR?: DrinkSubscriptionWhereInput[] | DrinkSubscriptionWhereInput
-  NOT?: DrinkSubscriptionWhereInput[] | DrinkSubscriptionWhereInput
+export interface TagsSubscriptionWhereInput {
+  AND?: TagsSubscriptionWhereInput[] | TagsSubscriptionWhereInput
+  OR?: TagsSubscriptionWhereInput[] | TagsSubscriptionWhereInput
+  NOT?: TagsSubscriptionWhereInput[] | TagsSubscriptionWhereInput
   mutation_in?: MutationType[] | MutationType
   updatedFields_contains?: String
   updatedFields_contains_every?: String[] | String
   updatedFields_contains_some?: String[] | String
-  node?: DrinkWhereInput
+  node?: TagsWhereInput
 }
 
-export interface FoodSubscriptionWhereInput {
-  AND?: FoodSubscriptionWhereInput[] | FoodSubscriptionWhereInput
-  OR?: FoodSubscriptionWhereInput[] | FoodSubscriptionWhereInput
-  NOT?: FoodSubscriptionWhereInput[] | FoodSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: FoodWhereInput
+export interface CuisinesUpdateInput {
+  ITALIAN?: Boolean
+  ASIAN?: Boolean
+  INDIAN?: Boolean
+  MISCELLANEOUS?: Boolean
+  LOCAL?: Boolean
+  VEGAN?: Boolean
+  VEGETARIAN?: Boolean
+  MEDITERRANEAN?: Boolean
+  MEXICAN?: Boolean
+  AMERICAN?: Boolean
 }
 
 /*
@@ -1278,73 +2019,84 @@ export interface Node {
 }
 
 /*
- * A connection to a list of items.
-
- */
-export interface DrinkConnection {
-  pageInfo: PageInfo
-  edges: DrinkEdge[]
-  aggregate: AggregateDrink
-}
-
-/*
- * A connection to a list of items.
-
- */
-export interface UserConnection {
-  pageInfo: PageInfo
-  edges: UserEdge[]
-  aggregate: AggregateUser
-}
-
-export interface DrinkPreviousValues {
-  name: String
-  location?: String
-  hours?: String
-  tags: Tag[]
-}
-
-export interface Drink {
-  name: String
-  location?: String
-  hours?: String
-  tags: Tag[]
-}
-
-/*
  * An edge in a connection.
 
  */
-export interface DrinkEdge {
-  node: Drink
+export interface TagsEdge {
+  node: Tags
   cursor: String
 }
 
-export interface Food {
-  name: String
-  location?: String
-  cuisine?: Cuisine
-  hours?: String
-  tags: Tag[]
+export interface Tags {
+  BREAKFAST: Boolean
+  LUNCH: Boolean
+  DINNER: Boolean
+  BRUNCH: Boolean
+  DESSERT: Boolean
 }
 
-/*
- * An edge in a connection.
-
- */
-export interface FoodEdge {
-  node: Food
-  cursor: String
+export interface TagsPreviousValues {
+  BREAKFAST: Boolean
+  LUNCH: Boolean
+  DINNER: Boolean
+  BRUNCH: Boolean
+  DESSERT: Boolean
 }
 
-export interface User extends Node {
+export interface Cuisines {
+  ITALIAN: Boolean
+  ASIAN: Boolean
+  INDIAN: Boolean
+  MISCELLANEOUS: Boolean
+  LOCAL: Boolean
+  VEGAN: Boolean
+  VEGETARIAN: Boolean
+  MEDITERRANEAN: Boolean
+  MEXICAN: Boolean
+  AMERICAN: Boolean
+}
+
+export interface AggregateTags {
+  count: Int
+}
+
+export interface Business extends Node {
   id: ID_Output
+  zomatoID?: String
   name: String
-  email: String
-  password: String
+  url?: String
+  address?: String
+  locality?: String
+  city?: String
+  latitude?: String
+  longitude?: String
+  price?: PriceRange
+  hours?: String
+  cuisine?: Cuisines
+  tags?: Tags
+  type?: BusinessType
 }
 
-export interface AggregateUser {
+/*
+ * A connection to a list of items.
+
+ */
+export interface TagsConnection {
+  pageInfo: PageInfo
+  edges: TagsEdge[]
+  aggregate: AggregateTags
+}
+
+/*
+ * An edge in a connection.
+
+ */
+export interface CuisinesEdge {
+  node: Cuisines
+  cursor: String
+}
+
+export interface AggregateBusiness {
   count: Int
 }
 
@@ -1355,23 +2107,47 @@ export interface UserSubscriptionPayload {
   previousValues?: UserPreviousValues
 }
 
-export interface BatchPayload {
-  count: Long
+/*
+ * A connection to a list of items.
+
+ */
+export interface BusinessConnection {
+  pageInfo: PageInfo
+  edges: BusinessEdge[]
+  aggregate: AggregateBusiness
 }
 
-export interface FoodSubscriptionPayload {
-  mutation: MutationType
-  node?: Food
-  updatedFields?: String[]
-  previousValues?: FoodPreviousValues
-}
-
-export interface FoodPreviousValues {
+export interface UserPreviousValues {
+  id: ID_Output
   name: String
-  location?: String
-  cuisine?: Cuisine
-  hours?: String
-  tags: Tag[]
+  email: String
+  password: String
+}
+
+/*
+ * An edge in a connection.
+
+ */
+export interface UserEdge {
+  node: User
+  cursor: String
+}
+
+export interface User extends Node {
+  id: ID_Output
+  name: String
+  email: String
+  password: String
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface UserConnection {
+  pageInfo: PageInfo
+  edges: UserEdge[]
+  aggregate: AggregateUser
 }
 
 /*
@@ -1385,19 +2161,73 @@ export interface PageInfo {
   endCursor?: String
 }
 
-export interface DrinkSubscriptionPayload {
+export interface CuisinesSubscriptionPayload {
   mutation: MutationType
-  node?: Drink
+  node?: Cuisines
   updatedFields?: String[]
-  previousValues?: DrinkPreviousValues
+  previousValues?: CuisinesPreviousValues
+}
+
+export interface BusinessSubscriptionPayload {
+  mutation: MutationType
+  node?: Business
+  updatedFields?: String[]
+  previousValues?: BusinessPreviousValues
+}
+
+export interface CuisinesPreviousValues {
+  ITALIAN: Boolean
+  ASIAN: Boolean
+  INDIAN: Boolean
+  MISCELLANEOUS: Boolean
+  LOCAL: Boolean
+  VEGAN: Boolean
+  VEGETARIAN: Boolean
+  MEDITERRANEAN: Boolean
+  MEXICAN: Boolean
+  AMERICAN: Boolean
+}
+
+export interface BusinessPreviousValues {
+  id: ID_Output
+  zomatoID?: String
+  name: String
+  url?: String
+  address?: String
+  locality?: String
+  city?: String
+  latitude?: String
+  longitude?: String
+  price?: PriceRange
+  hours?: String
+  type?: BusinessType
+}
+
+export interface TagsSubscriptionPayload {
+  mutation: MutationType
+  node?: Tags
+  updatedFields?: String[]
+  previousValues?: TagsPreviousValues
+}
+
+export interface BatchPayload {
+  count: Long
+}
+
+export interface AggregateCuisines {
+  count: Int
+}
+
+export interface AggregateUser {
+  count: Int
 }
 
 /*
  * An edge in a connection.
 
  */
-export interface UserEdge {
-  node: User
+export interface BusinessEdge {
+  node: Business
   cursor: String
 }
 
@@ -1405,32 +2235,11 @@ export interface UserEdge {
  * A connection to a list of items.
 
  */
-export interface FoodConnection {
+export interface CuisinesConnection {
   pageInfo: PageInfo
-  edges: FoodEdge[]
-  aggregate: AggregateFood
+  edges: CuisinesEdge[]
+  aggregate: AggregateCuisines
 }
-
-export interface AggregateFood {
-  count: Int
-}
-
-export interface AggregateDrink {
-  count: Int
-}
-
-export interface UserPreviousValues {
-  id: ID_Output
-  name: String
-  email: String
-  password: String
-}
-
-/*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
-*/
-export type ID_Input = string | number
-export type ID_Output = string
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
@@ -1442,6 +2251,12 @@ The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
 */
 export type Long = string
+
+/*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number
+export type ID_Output = string
 
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
