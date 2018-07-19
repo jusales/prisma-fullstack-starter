@@ -30,5 +30,9 @@ export const auth = {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user
     }
+  },
+
+  async createBusiness(parent, args, ctx: Context, info) {
+    return await ctx.db.mutation.createBusiness({ ...args }, info)
   }
 }
