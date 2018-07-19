@@ -291,7 +291,7 @@ class SUBMITF extends React.Component {
                   </div>
 
                   <div className="col-sm-12">
-                    <button className="square-button">Submit Dem Eats!</button>
+                    <button className="square-button" class="button">Submit Dem Eats!</button>
                   </div>
                 </form>
               </section>

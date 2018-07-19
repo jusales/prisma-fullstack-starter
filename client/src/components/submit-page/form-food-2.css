@@ -82,13 +82,19 @@ textarea {
 
 a,
 area,
-button,
 input,
 label,
 select,
 summary,
 textarea,
 [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   width: 100%;

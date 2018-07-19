@@ -11,7 +11,7 @@ class HomePage extends React.Component {
           <div className="header-content">
             <div className="inner">
               <h1 className="cursive">pick your poison</h1>
-              <h4>for the 'mems</h4>
+              <h4 class="h4">for the 'mems</h4>
               <hr />
               <button
                 id="toggleVideo"
