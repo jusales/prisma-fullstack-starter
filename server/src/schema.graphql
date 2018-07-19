@@ -22,6 +22,7 @@ type Business {
   latitude: String
   longitude: String
   price: PriceRange
+  hours: String
   cuisine: Cuisines
   tags: Tags
   type: BusinessType

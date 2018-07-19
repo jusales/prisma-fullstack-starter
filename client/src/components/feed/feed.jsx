@@ -15,9 +15,6 @@ const GET_RES = gql`
       latitude
       longitude
       price
-      hours
-      cuisine
-      tags
       type
     }
   }
@@ -39,24 +36,11 @@ const GET_RES = gql`
  */
 
 class Feed extends React.Component {
-  constructor() {
-    //this is where step 0 would go, where we look up (or hard code) the list of tags/cuisine
-    tags = ["BRUNCH", "LUNCH"]
-
-    //then, we set up the shape of our stat's tags and cuisines object
-    this.state.tags = {}
-    tags.forEach(tag => {
-      this.state.tags[tag] = false
-    })
-
-    //at the end of this function, we need to have a this.state.tags, and it should look like:
-    /**
-     * tags: {
+  state = {
+    tags: {
       BRUNCH: false,
-      LUNCH: false
-    },
-     */
-    //TODO DONT FORGET we need to do the same for cuisines
+      BREAKFAST: false
+    }
   }
 
   render() {
@@ -67,6 +51,13 @@ class Feed extends React.Component {
           //create a checkbox with the text of the tag
           //link that checkbox to change the boolean of the tag's state
           //onclick, toggle this.state.tags[tag] (so it turns from F->T or T->F)
+          return (
+            <input
+              type="checkbox"
+              onClick={(this.state.tags[tag] = !this.state.tags[tag])}
+              value="$tag"
+            />
+          )
         })}
         <Query
           query={GET_RES}
@@ -90,6 +81,7 @@ class Feed extends React.Component {
               return "LOading..."
             }
             if (error) {
+              console.log("ERROR HERE********")
               return error
             }
             return (
@@ -97,15 +89,17 @@ class Feed extends React.Component {
                 {/* TODO: here is where we do step 3
                 data.business will probably have the businesses in it
                 You can create components to display each business. */}
-                {data.tweets.map(tweet => {
-                  return (
-                    <TweetComponent
-                      key={tweet.id}
-                      text={tweet.text}
-                      author={tweet.author}
-                    />
-                  )
-                })}
+                {/* {data.business.map(business => {
+
+                  // return (
+                  //   // <TweetComponent
+                  //   //   key={tweet.id}
+                  //   //   text={tweet.text}
+                  //   //   author={tweet.author}
+                  //   // />
+                  // )
+                })} */}
+                data.business
               </div>
             )
           }}
