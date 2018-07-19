@@ -37,6 +37,9 @@
     border-radius: 0;
     max-width: 400px;
     margin: 0 auto;
+    background-color: white;
+    padding-bottom: 40px;
+    box-shadow: 0 0 10px 0 rgba(10, 10, 10, 0.2);
   }
   .card .caption {
     padding: 15px;

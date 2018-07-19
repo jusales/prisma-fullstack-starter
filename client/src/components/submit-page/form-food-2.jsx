@@ -61,7 +61,7 @@ class SUBMITF extends React.Component {
   render() {
     return (
       <div>
-        <h1>Feed Me Please</h1>
+        <h1 class="h1">Feed Me Please</h1>
 
         <Mutation mutation={CREATE_BUSINESS}>
           {(createBusiness, { data, loading, error }) => {
