@@ -26,13 +26,6 @@
   box-sizing: border-box;
 }
 
-.non-input-block {
-  -webkit-margin-after: 1em;
-  margin-top: 1em;
-  padding: 25px;
-  text-align: left;
-}
-
 .FormGroup {
   display: flex;
   justify-content: flex-start;
@@ -41,7 +34,6 @@
 
 .submit-food-form .input-block.focus {
   background-color: #fff;
-  border: solid 1px #fb2900;
 }
 .submit-food-form .input-block.textarea {
   font-family: "Questrial", "Helvetica Neue", Arial, sans-serif;
@@ -111,6 +103,21 @@ textarea,
   font-size: 18px;
   color: #333;
 }
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: #333;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  z-index: 2;
+}
+
 .submit-food-form .input-block .form-control:focus label {
   top: 0;
 }
@@ -147,8 +154,8 @@ textarea,
 
 body {
   font-family: "Questrial", "Helvetica Neue", Arial, sans-serif;
-  background-image: url("https://www.collegiate-ac.pt/app/uploads/2017/10/hero-lisbon.jpg");
   background-size: 100%;
+  background-repeat: repeat-x;
   font-family: "Roboto", sans-serif;
 }
 
@@ -168,4 +175,10 @@ h1 {
   text-align: center;
 }
 
-/* full landing page start here */
+.form-food {
+  background: linear-gradient(#f7cdee, #7d9ffe);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+}

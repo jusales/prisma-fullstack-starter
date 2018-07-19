@@ -14,39 +14,19 @@ const CREATE_BUSINESS = gql`
       id
       name
       url
-      price
-      cuisine {
-        ITALIAN
-        ASIAN
-        INDIAN
-        MISCELLANEOUS
-        LOCAL
-        VEGAN
-        VEGETARIAN
-        MEDITERRANEAN
-        MEXICAN
-        AMERICAN
-      }
-      tags {
-        BREAKFAST
-        LUNCH
-        DINNER
-        BRUNCH
-        DESSERT
-      }
     }
   }
 `
 
-import "./form-food-2.css"
+import "./form-submit-drink.css"
 
-class SUBMITF extends React.Component {
+class SUBMITD extends React.Component {
   state = {
     name: "",
     url: "",
     hours: "",
     locality: "",
-    comment: "",
+    price: "",
     tags: {
       BRUNCH: false,
       LUNCH: false,
@@ -57,19 +37,6 @@ class SUBMITF extends React.Component {
       FANCYAF: false,
       TREATYOSELF: false
     },
-    cuisine: {
-      ITALIAN: false,
-      ASIAN: false,
-      INDIAN: false,
-      MISCELLANEOUS: false,
-      LOCAL: false,
-      VEGAN: false,
-      VEGETARIAN: false,
-      MEDITERRANEAN: false,
-      MEXICAN: false,
-      AMERICAN: false
-    },
-    price: "",
     latitude: null,
     longitude: null,
     price: "ONE"
@@ -93,7 +60,7 @@ class SUBMITF extends React.Component {
 
   render() {
     return (
-      <div className="form-food">
+      <div>
         <h1>Feed Me Please</h1>
 
         <Mutation mutation={CREATE_BUSINESS}>
@@ -122,7 +89,6 @@ class SUBMITF extends React.Component {
                         }
                       }
                     })
-                    this.props.history.push("/feed")
                   }}
                 >
                   <div className="col-sm-12">
@@ -131,7 +97,6 @@ class SUBMITF extends React.Component {
                       <input
                         type="text"
                         name="name"
-                        placeholder="Name"
                         onChange={e => this.setState({ name: e.target.value })}
                         className="form-control"
                       />
@@ -199,7 +164,6 @@ class SUBMITF extends React.Component {
                       <input
                         type="text"
                         name="url"
-                        placeholder="url"
                         onChange={e => this.setState({ url: e.target.value })}
                         className="form-control"
                       />
@@ -211,7 +175,6 @@ class SUBMITF extends React.Component {
                       <label for="">When is it open?</label>
                       <input
                         type="text"
-                        placeholder="Hours"
                         name="hours"
                         onChange={e => this.setState({ hours: e.target.value })}
                         className="form-control"
@@ -224,7 +187,6 @@ class SUBMITF extends React.Component {
                       <label for="">Neighborhood</label>
                       <input
                         type="text"
-                        placeholder="'hood"
                         name="locality"
                         onChange={e =>
                           this.setState({ locality: e.target.value })
@@ -275,7 +237,7 @@ class SUBMITF extends React.Component {
                         <Radio name="radioGroup" inline>
                           {"$$$"}
                         </Radio>
-                        <Radio name="radioGroup" inline>
+                          <Radio name="radioGroup" inline>
                           {"$$$"}
                         </Radio>
                         <Radio name="radioGroup" inline>
@@ -319,7 +281,7 @@ class SUBMITF extends React.Component {
                   </div>
 
                   <div className="col-sm-12">
-                    <div className="input-block textarea">
+                    {/* <div className="input-block textarea">
                       <label for="">
                         Write your tips and recs here! You can tell us what to
                         eat, when to go, if its cash only, if we need a
@@ -334,11 +296,14 @@ class SUBMITF extends React.Component {
                         name="foodmessage"
                         className="form-control"
                       />
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="col-sm-12">
-                    <button className="square-button">Submit Dem Eats!</button>
+                    <button className="square-button" 
+                    onClick={() => this.props.history.push("/foodfeed")}>
+                    Submit Dem Eats!
+                    </button>
                   </div>
                 </form>
               </section>
@@ -350,4 +315,4 @@ class SUBMITF extends React.Component {
   }
 }
 
-export default SUBMITF
+export default SUBMITD

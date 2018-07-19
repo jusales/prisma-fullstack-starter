@@ -6,11 +6,14 @@ type User {
 }
 
 type Tags {
-  BREAKFAST: Boolean! @default(value: false)
+  BRUNCH: Boolean! @default(value: false)
   LUNCH: Boolean! @default(value: false)
   DINNER: Boolean! @default(value: false)
-  BRUNCH: Boolean! @default(value: false)
-  DESSERT: Boolean! @default(value: false)
+  DRUNCHIES: Boolean! @default(value: false)
+  CRAFTCOCKTAILS: Boolean! @default(value: false)
+  INSTAWORTHY: Boolean! @default(value: false)
+  FANCYAF: Boolean! @default(value: false)
+  TREATYOSELF: Boolean! @default(value: false)
 }
 
 type Cuisines {
