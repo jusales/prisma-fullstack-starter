@@ -1,9 +1,8 @@
-/*
+/* 
 
 Landing Zero theme - A free landing page theme from BootstrapZero
 http://www.bootstrapzero.com
-
-*/
+ */
 
 @import url(https://fonts.googleapis.com/css?family=Questrial);
 @import url(https://fonts.googleapis.com/css?family=Dancing+Script:700);
@@ -82,7 +81,7 @@ p {
 .cursive {
   font-family: "Dancing Script", cursive;
   text-transform: none;
-  background: none;
+  color: white;
 }
 
 .text-faded {
@@ -515,4 +514,8 @@ img::selection {
 img::-moz-selection {
   color: #fff;
   background: 0 0;
+}
+
+.h4 {
+  color: rgba(255, 255, 255, 0.7);
 }
