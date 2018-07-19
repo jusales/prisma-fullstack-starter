@@ -61,7 +61,7 @@ class SUBMITF extends React.Component {
   render() {
     return (
       <div>
-        <h1>Feed Me Please</h1>
+        <h1 class="h1">Feed Me Please</h1>
 
         <Mutation mutation={CREATE_BUSINESS}>
           {(createBusiness, { data, loading, error }) => {
@@ -291,7 +291,9 @@ class SUBMITF extends React.Component {
                   </div>
 
                   <div className="col-sm-12">
-                    <button className="square-button">Submit Dem Eats!</button>
+                    <button className="square-button" class="button">
+                      Submit Dem Eats!
+                    </button>
                   </div>
                 </form>
               </section>
