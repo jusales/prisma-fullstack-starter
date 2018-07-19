@@ -2,7 +2,6 @@ import * as React from "react"
 import { FormGroup, Radio, Checkbox } from "react-bootstrap"
 import "./form-food-2.css"
 
-
 class SUBMITF extends React.Component {
   render() {
     return (
@@ -67,9 +66,8 @@ class SUBMITF extends React.Component {
                     {"$$$"}
                   </Radio>
                 </FormGroup>
-                </div>
               </div>
-            
+            </div>
 
             <div className="col-sm-12">
               <div className="non-input-block">
@@ -113,8 +111,8 @@ class SUBMITF extends React.Component {
   }
 }
 
-
-{/* <section id="last">
+{
+  /* <section id="last">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -148,6 +146,7 @@ class SUBMITF extends React.Component {
                 </div>
             </div>
         </div>
-    </section> */}
+    </section>  */
+}
 
 export default SUBMITF

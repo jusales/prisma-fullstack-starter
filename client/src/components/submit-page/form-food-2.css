@@ -150,16 +150,6 @@ body {
   font-family: "Questrial", "Helvetica Neue", Arial, sans-serif;
   background-image: url("https://www.collegiate-ac.pt/app/uploads/2017/10/hero-lisbon.jpg");
   background-size: 100%;
-  /* background-image: -webkit-gradient(
-    linear,
-    0% 50%,
-    100% 50%,
-    color-stop(0%, #ff512f),
-    color-stop(100%, #dd2476)
-  );
-  background-image: -moz-linear-gradient(left, #ff512f, #dd2476);
-  background-image: -webkit-linear-gradient(left, #ff512f, #dd2476);
-  background-image: linear-gradient(to right, #ff512f, #dd2476); */
   font-family: "Roboto", sans-serif;
 }
 
@@ -178,3 +168,8 @@ h1 {
   font-weight: 700;
   text-align: center;
 }
+
+
+
+
+/* full landing page start here */
