@@ -91,13 +91,14 @@ class Feed extends React.Component {
                 You can create components to display each business. */}
                 {/* {data.business.map(business => {
 
-                  // return (
+                  return (
+
                   //   // <TweetComponent
                   //   //   key={tweet.id}
                   //   //   text={tweet.text}
                   //   //   author={tweet.author}
                   //   // />
-                  // )
+                  )
                 })} */}
                 data.business
               </div>

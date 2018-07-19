@@ -22,8 +22,9 @@ class HomePage extends React.Component {
                 EAT
               </button>{" "}
               &nbsp;{" "}
-              <button className="btn btn-primary btn-xl page-scroll"
-              onClick={() => this.props.history.push("/drinkfeed")}
+              <button
+                className="btn btn-primary btn-xl page-scroll"
+                onClick={() => this.props.history.push("/drinkfeed")}
               >
                 PARTY
               </button>
@@ -39,8 +40,13 @@ class HomePage extends React.Component {
                 </h2>
                 <br />
                 <p className="text-faded">
-                  Have you ever lookd the pages and pages of your pre-holiday google search for the coolest things to do? Things that will make your friends jealous and your insta light up? Then have you gone, only to realise the queque will take longer than the time you're in the country? 
-                  We've got all the real tips that you can only get from locals, friends and fiens so you never miss out on avo toast or a dj's set again. 
+                  Have you ever lookd the pages and pages of your pre-holiday
+                  google search for the coolest things to do? Things that will
+                  make your friends jealous and your insta light up? Then have
+                  you gone, only to realise the queque will take longer than the
+                  time you're in the country? We've got all the real tips that
+                  you can only get from locals, friends and fiens so you never
+                  miss out on avo toast or a dj's set again.
                 </p>
                 <a href="#three" className="btn btn-default btn-xl page-scroll">
                   INSPO
@@ -53,7 +59,9 @@ class HomePage extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <h2 className="margin-top-0 text-primary">On Your Holiday You Should: </h2>
+                <h2 className="margin-top-0 text-primary">
+                  On Your Holiday You Should:{" "}
+                </h2>
                 <hr className="primary" />
               </div>
             </div>
@@ -67,7 +75,9 @@ class HomePage extends React.Component {
                     data-wow-delay=".3s"
                   />
                   <h3>Brunch</h3>
-                  <p className="text-muted">Nothing like rehashing last nights debauchery over eggs.</p>
+                  <p className="text-muted">
+                    Nothing like rehashing last nights debauchery over eggs.
+                  </p>
                 </div>
               </div>
               <div className="col-lg-4 col-md-4 text-center">
@@ -78,7 +88,8 @@ class HomePage extends React.Component {
                   />
                   <h3>Go Out</h3>
                   <p className="text-muted">
-                    Nothing to discuss over eggs if you dont go out in the first place ? 
+                    Nothing to discuss over eggs if you dont go out in the first
+                    place ?
                   </p>
                 </div>
               </div>
@@ -90,7 +101,8 @@ class HomePage extends React.Component {
                   />
                   <h3>Dine</h3>
                   <p className="text-muted">
-                    They say you can see the soul of any country through its food. Who are we to argue with that?
+                    They say you can see the soul of any country through its
+                    food. Who are we to argue with that?
                   </p>
                 </div>
               </div>
@@ -229,8 +241,7 @@ class HomePage extends React.Component {
             </div>
           </div>
         </section>
-       
-        
+
         <footer id="footer">
           <div className="container-fluid">
             <div className="row">
@@ -238,16 +249,16 @@ class HomePage extends React.Component {
                 <h4>Information</h4>
                 <ul className="list-unstyled">
                   <li>
-                    <a href>Restaurants</a>
+                    <a href="#">Restaurants</a>
                   </li>
                   <li>
-                    <a href>Services</a>
+                    <a href="#">Services</a>
                   </li>
                   <li>
-                    <a href>Promoters</a>
+                    <a href="#">Promoters</a>
                   </li>
                   <li>
-                    <a href>DJs</a>
+                    <a href="#">DJs</a>
                   </li>
                 </ul>
               </div>

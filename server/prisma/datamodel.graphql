@@ -54,4 +54,5 @@ type Business {
   cuisine: Cuisines
   tags: Tags
   type: BusinessType
+  comment: String
 }
