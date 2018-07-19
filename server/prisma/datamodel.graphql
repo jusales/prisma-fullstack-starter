@@ -4,3 +4,54 @@ type User {
   email: String! @unique
   password: String!
 }
+
+type Tags {
+  BREAKFAST: Boolean! @default(value: false)
+  LUNCH: Boolean! @default(value: false)
+  DINNER: Boolean! @default(value: false)
+  BRUNCH: Boolean! @default(value: false)
+  DESSERT: Boolean! @default(value: false)
+}
+
+type Cuisines {
+  ITALIAN: Boolean! @default(value: false)
+  ASIAN: Boolean! @default(value: false)
+  INDIAN: Boolean! @default(value: false)
+  MISCELLANEOUS: Boolean! @default(value: false)
+  LOCAL: Boolean! @default(value: false)
+  VEGAN: Boolean! @default(value: false)
+  VEGETARIAN: Boolean! @default(value: false)
+  MEDITERRANEAN: Boolean! @default(value: false)
+  MEXICAN: Boolean! @default(value: false)
+  AMERICAN: Boolean! @default(value: false)
+}
+
+enum BusinessType {
+  BAR
+  RESTAURANT
+}
+
+enum PriceRange {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+}
+
+type Business {
+  id: ID! @unique
+  zomatoID: String
+  name: String!
+  url: String
+  address: String
+  locality: String
+  city: String
+  latitude: String
+  longitude: String
+  price: PriceRange
+  hours: String
+  cuisine: Cuisines
+  tags: Tags
+  type: BusinessType
+}
