@@ -4,6 +4,7 @@ import { Query } from "react-apollo"
 import { Checkbox } from "react-bootstrap"
 import Card from "../card/card"
 import "./feed.css"
+// import "./generated/prisma.graphql"
 
 const GET_RES = gql`
   query business($where: BusinessWhereInput) {
@@ -42,52 +43,86 @@ const GET_RES = gql`
 class Feed extends React.Component {
   state = {
     tags: {
-      BRUNCH: false,
-      LUNCH: false,
-      DINNER: false,
-      DRUNCHIES: false,
-      CRAFTCOCKTAILS: false,
-      INSTAWORTHY: false,
-      FANCYAF: false,
-      TECHNORAVE: false,
-      DANCEALLNIGHT: false,
-      LIVEBAND: false,
-      ROOFTOP: false,
-      GRUNGY: false,
-      TREATYOSELF: false
+      OR: [
+        { BRUNCH: false },
+        { LUNCH: false },
+        { DINNER: false },
+        { DRUNCHIES: false },
+        { CRAFTCOCKTAILS: false },
+        { INSTAWORTHY: false },
+        { FANCYAF: false },
+        { TECHNORAVE: false },
+        { DANCEALLNIGHT: false },
+        { LIVEBAND: false },
+        { ROOFTOP: false },
+        { GRUNGY: false },
+        { TREATYOSELF: false }
+      ]
     },
     cuisine: {
-      ITALIAN: false,
-      ASIAN: false,
-      INDIAN: false,
-      MISCELLANEOUS: false,
-      LOCAL: false,
-      VEGAN: false,
-      VEGETARIAN: false,
-      MEDITERRANEAN: false,
-      MEXICAN: false,
-      AMERICAN: false
+      OR: [
+        { ITALIAN: false },
+        { ASIAN: false },
+        { INDIAN: false },
+        { MISCELLANEOUS: false },
+        { LOCAL: false },
+        { VEGAN: false },
+        { VEGETARIAN: false },
+        { MEDITERRANEAN: false },
+        { MEXICAN: false },
+        { AMERICAN: false }
+      ]
+    },
+    tagsTrue: {
+      OR: [
+        { BRUNCH: true },
+        { LUNCH: true },
+        { DINNER: true },
+        { DRUNCHIES: true },
+        { CRAFTCOCKTAILS: true },
+        { INSTAWORTHY: true },
+        { FANCYAF: true },
+        { TECHNORAVE: true },
+        { DANCEALLNIGHT: true },
+        { LIVEBAND: true },
+        { ROOFTOP: true },
+        { GRUNGY: true },
+        { TREATYOSELF: true }
+      ]
+    },
+    cuisineTrue: {
+      OR: [
+        { ITALIAN: true },
+        { ASIAN: true },
+        { INDIAN: true },
+        { MISCELLANEOUS: true },
+        { LOCAL: true },
+        { VEGAN: true },
+        { VEGETARIAN: true },
+        { MEDITERRANEAN: true },
+        { MEXICAN: true },
+        { AMERICAN: true }
+      ]
     }
   }
 
   render() {
     return (
-      <div>
+      <div className="page">
         <Query
           query={GET_RES}
           variables={{
             where: {
-              // tags: {
-              //   BRUNCH: this.state.tags.BRUNCH
-              // }
-              tags: this.state.tags,
-              cuisine: this.state.cuisine
-              /**
-               * we can just tags: this.state.tags since the tags object in state
-               * matches the shape of the tags object our where: expects based on
-               * our graphQL schema
-               * DONT FORGET to do the same for cuisine
-               */
+              tags: this.state.tags.OR.map(
+                tag => tag[Object.keys(tag)[0]]
+              ).reduce((a, b) => a || b)
+                ? this.state.tags
+                : undefined,
+              cuisine: this.state.cuisine.OR.map(
+                cuisine => cuisine[Object.keys(cuisine)[0]]
+              ).reduce((a, b) => a || b)
+                ? this.state.cuisine
+                : undefined
             }
           }}
         >
@@ -103,22 +138,23 @@ class Feed extends React.Component {
             return (
               <div className="feed-wrapper">
                 <div className="tag-inputs">
-                  {Object.keys(this.state.tags).map(tag => {
+                  {this.state.tags.OR.map((tag, idx) => {
                     return (
                       <div className="tag-checkbox">
                         <label>
-                          {tag}
+                          {Object.keys(tag)[0]}
                           <Checkbox
-                            key={tag}
+                            key={Object.keys(tag)[0]}
                             className="tags-box"
-                            checked={this.state.tags[tag]}
+                            checked={
+                              this.state.tags.OR[idx][Object.keys(tag)[0]]
+                            }
                             onClick={() => {
+                              this.state.tags.OR[idx][
+                                Object.keys(tag)[0]
+                              ] = !this.state.tags.OR[idx][Object.keys(tag)[0]]
                               this.setState({
-                                ...this.state,
-                                tags: {
-                                  ...this.state.tags,
-                                  [tag]: !this.state.tags[tag]
-                                }
+                                ...this.state
                               })
                             }}
                           />
@@ -127,23 +163,30 @@ class Feed extends React.Component {
                     )
                   })}
 
-                  {Object.keys(this.state.cuisine).map(cus => {
-                    console.log(this.state)
+                  {this.state.cuisine.OR.map((cuisine, idx) => {
+                    //cuisineName = Object.keys(cuisine)[0]
+                    //Object.keys(this.state.tags.OR[idx].key)[idx]
+                    console.log(this.state.tags)
                     return (
                       <div className="tag-checkbox">
                         <label>
-                          {cus}
+                          {Object.keys(cuisine)[0]}
                           <Checkbox
-                            key={cus}
+                            key={Object.keys(cuisine)[0]}
                             className="tags-box"
-                            checked={this.state.cuisine[cus]}
+                            checked={
+                              this.state.cuisine.OR[idx][
+                                Object.keys(cuisine)[0]
+                              ]
+                            }
                             onClick={() => {
+                              this.state.cuisine.OR[idx][
+                                Object.keys(cuisine)[0]
+                              ] = !this.state.cuisine.OR[idx][
+                                Object.keys(cuisine)[0]
+                              ]
                               this.setState({
-                                ...this.state,
-                                cuisine: {
-                                  ...this.state.cuisine,
-                                  [cus]: !this.state.cuisine[cus]
-                                }
+                                ...this.state
                               })
                             }}
                           />
@@ -153,6 +196,7 @@ class Feed extends React.Component {
                   })}
                 </div>
                 {data.business.map(business => {
+                  //console.log(data.business)
                   return <Card {...business} />
                 })}
               </div>

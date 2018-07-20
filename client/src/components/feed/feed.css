@@ -1,6 +1,10 @@
 .feed-wrapper {
   background: linear-gradient(#f7cdee, #7d9ffe);
 }
+.page {
+  background: linear-gradient(#7d9ffe, #f7cdee);
+  height: 5000pt;
+}
 
 .tags-box {
   width: 100%;
