@@ -41,8 +41,7 @@ const GET_RES = gql`
 class Feed extends React.Component {
   state = {
     tags: {
-      BRUNCH: false,
-      BREAKFAST: false
+      BRUNCH: false
     }
   }
 
@@ -74,30 +73,34 @@ class Feed extends React.Component {
               console.log("ERROR HERE********")
               return error
             }
-            console.log({ businesses: data.business })
+
             return (
               <div className="feed-wrapper">
-                {Object.keys(this.state.tags).forEach(tag => {
-                  console.log(tag)
-                  //Object.keys() gets just the keys [BRUNCH, LUNCH, etc.]
-                  //create a checkbox with the text of the tag
-                  //link that checkbox to change the boolean of the tag's state
-                  //onclick, toggle this.state.tags[tag] (so it turns from F->T or T->F)
-                  return (
-                    <div class="checkbox">
-                      <Checkbox
-                        class="tags-box"
-                        onClick={() =>
-                          (this.state.tags[tag] = !this.state.tags[tag])
-                        }
-                        value="hello"
-                      />
-                    </div>
-                  )
-                })}
-                {/* TODO: here is where we do step 3
-                data.business will probably have the businesses in it
-                You can create components to display each business. */}
+                <div className="tag-inputs">
+                  {Object.keys(this.state.tags).map(tag => {
+                    return (
+                      <div className="tag-checkbox">
+                        <label>
+                          {tag}
+                          <Checkbox
+                            key={tag}
+                            className="tags-box"
+                            checked={this.state.tags[tag]}
+                            onClick={() => {
+                              this.setState({
+                                ...this.state,
+                                tags: {
+                                  ...this.state.tags,
+                                  [tag]: !this.state.tags[tag]
+                                }
+                              })
+                            }}
+                          />
+                        </label>
+                      </div>
+                    )
+                  })}
+                </div>
                 {data.business.map(business => {
                   return <Card {...business} />
                 })}
