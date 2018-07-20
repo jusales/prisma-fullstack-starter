@@ -13,12 +13,12 @@ type Tags {
   CRAFTCOCKTAILS: Boolean! @default(value: false)
   INSTAWORTHY: Boolean! @default(value: false)
   FANCYAF: Boolean! @default(value: false)
-  TREATYOSELF! @default(value: false)
   TECHNORAVE: Boolean! @default(value: false)
   DANCEALLNIGHT: Boolean! @default(value: false)
   LIVEBAND: Boolean! @default(value: false)
   ROOFTOP: Boolean! @default(value: false)
-  GRUNGY/DIVE: Boolean! @default(value: false)
+  GRUNGY: Boolean! @default(value: false)
+  TREATYOSELF: Boolean! @default(value: false)
 }
 
 type Cuisines {
@@ -62,4 +62,5 @@ type Business {
   cuisine: Cuisines
   tags: Tags
   type: BusinessType
+  comment: String
 }

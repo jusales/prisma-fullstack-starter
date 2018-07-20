@@ -2,6 +2,11 @@ import * as React from "react"
 import "./card.css"
 
 class Card extends React.Component {
+  price = {
+    ONE: "$",
+    TWO: "$$"
+  }
+
   render() {
     return (
       <div class="card">
@@ -24,22 +29,19 @@ class Card extends React.Component {
           />
           <div class="caption">
             <div class="meta clearfix">
-              <span class="pull-left">Author</span>
-              <span class="pull-right">1h ago</span>
+              <span class="pull-left">{this.props.locality}</span>
+              <span class="pull-right">{this.price[this.props.price]}</span>
             </div>
             <h3>{this.props.name}</h3>
-            <p>
-              Minima totam laudantium, cumque sed eius alias sint veritatis
-              corporis necessitatibus!
-            </p>
+            <p>Leave message here</p>
           </div>
           <hr />
           <div class="caption">
             <span class="glyphicon glyphicon-thumbs-up">&nbsp;</span>
             <span class="glyphicon glyphicon-share">&nbsp;</span>
             <span class="glyphicon glyphicon-comment">&nbsp;</span>
-            <a class="pull-right" href="#">
-              view on facebook{" "}
+            <a class="pull-right" href={this.props.url}>
+              Go to website{" "}
             </a>
           </div>
         </div>

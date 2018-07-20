@@ -3,6 +3,7 @@ import gql from "graphql-tag"
 import { Query } from "react-apollo"
 import { Checkbox } from "react-bootstrap"
 import Card from "../card/card"
+import "./feed.css"
 
 const GET_RES = gql`
   query business($where: BusinessWhereInput) {
@@ -17,6 +18,7 @@ const GET_RES = gql`
       latitude
       longitude
       price
+      hours
       type
     }
   }
@@ -40,7 +42,31 @@ const GET_RES = gql`
 class Feed extends React.Component {
   state = {
     tags: {
-      BRUNCH: false
+      BRUNCH: false,
+      LUNCH: false,
+      DINNER: false,
+      DRUNCHIES: false,
+      CRAFTCOCKTAILS: false,
+      INSTAWORTHY: false,
+      FANCYAF: false,
+      TECHNORAVE: false,
+      DANCEALLNIGHT: false,
+      LIVEBAND: false,
+      ROOFTOP: false,
+      GRUNGY: false,
+      TREATYOSELF: false
+    }, 
+    cuisine: {
+      ITALIAN: false,
+      ASIAN: false,
+      INDIAN: false,
+      MISCELLANEOUS: false,
+      LOCAL: false,
+      VEGAN: false,
+      VEGETARIAN: false,
+      MEDITERRANEAN: false,
+      MEXICAN: false,
+      AMERICAN: false,
     }
   }
 
@@ -51,16 +77,7 @@ class Feed extends React.Component {
           query={GET_RES}
           variables={{
             where: {
-              // tags: {
-              //   BRUNCH: this.state.tags.BRUNCH
-              // }
               tags: this.state.tags
-              /**
-               * we can just tags: this.state.tags since the tags object in state
-               * matches the shape of the tags object our where: expects based on
-               * our graphQL schema
-               * DONT FORGET to do the same for cuisine
-               */
             }
           }}
         >
@@ -72,25 +89,57 @@ class Feed extends React.Component {
               console.log("ERROR HERE********")
               return error
             }
-            console.log({ businesses: data.business })
+
             return (
               <div className="feed-wrapper">
-                {Object.keys(this.state.tags).forEach(tag => {
-                  //Object.keys() gets just the keys [BRUNCH, LUNCH, etc.]
-                  //create a checkbox with the text of the tag
-                  //link that checkbox to change the boolean of the tag's state
-                  //onclick, toggle this.state.tags[tag] (so it turns from F->T or T->F)
-                  return (
-                    <Checkbox
-                      onClick={() =>
-                        (this.state.tags[tag] = !this.state.tags[tag])
-                      }
-                    />
-                  )
-                })}
-                {/* TODO: here is where we do step 3
-                data.business will probably have the businesses in it
-                You can create components to display each business. */}
+                <div className="tag-inputs">
+                  {Object.keys(this.state.tags).map(tag => {
+                    return (
+                      <div className="tag-checkbox">
+                        <label>
+                          {tag}
+                          <Checkbox
+                            key={tag}
+                            className="tags-box"
+                            checked={this.state.tags[tag]}
+                            onClick={() => {
+                              this.setState({
+                                ...this.state,
+                                tags: {
+                                  ...this.state.tags,
+                                  [tag]: !this.state.tags[tag]
+                                }
+                              })
+                            }}
+                          />
+                        </label>
+                      </div>
+                    )
+                  })}
+                  {Object.keys(this.state.cuisines).map(cus => {
+                    return (
+                      <div className="tag-checkbox">
+                        <label>
+                          {cus}
+                          <Checkbox
+                            key={cus}
+                            className="tags-box"
+                            checked={this.state.cuisine[cus]}
+                            onClick={() => {
+                              this.setState({
+                                ...this.state,
+                                cuisine: {
+                                  ...this.state.cuisine,
+                                  [cus]: !this.state.cuisine[cus]
+                                }
+                              })
+                            }}
+                          />
+                        </label>
+                      </div>
+                    )
+                  })}
+                </div>
                 {data.business.map(business => {
                   return <Card {...business} />
                 })}
