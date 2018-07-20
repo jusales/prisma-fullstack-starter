@@ -1,0 +1,9 @@
+.feed-wrapper {
+    /* background-color: white;
+    background-image: url("https://www.collegiate-ac.pt/app/uploads/2017/10/hero-lisbon.jpg"); */
+ 
+        background: linear-gradient(#f7cdee, #7D9FFE);
+
+    padding-top: 60px;
+    padding-bottom: 50px;
+}

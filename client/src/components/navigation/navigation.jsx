@@ -40,9 +40,10 @@ class Navigation extends React.Component {
                 </a>
               </li>
               <li>
-                <a className="page-scroll" href="#last">
-                  Contact
+                <a className="page-scroll" href="submit">
+                  SUBMIT
                 </a>
+              
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">

@@ -40,8 +40,7 @@ const GET_RES = gql`
 class Feed extends React.Component {
   state = {
     tags: {
-      BRUNCH: false,
-      BREAKFAST: false
+      BRUNCH: false
     }
   }
 

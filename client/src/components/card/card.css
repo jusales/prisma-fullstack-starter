@@ -61,7 +61,7 @@
   }
   @media (max-width: 560px) {
     .masonry {
-      columns: 1;
+      columns: 2;
     }
   }
   .masonry .card {
