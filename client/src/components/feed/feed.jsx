@@ -19,6 +19,7 @@ const GET_RES = gql`
       longitude
       price
       type
+      comment
     }
   }
 `
@@ -41,7 +42,31 @@ const GET_RES = gql`
 class Feed extends React.Component {
   state = {
     tags: {
-      BRUNCH: false
+      BRUNCH: false,
+      LUNCH: false,
+      DINNER: false,
+      DRUNCHIES: false,
+      CRAFTCOCKTAILS: false,
+      INSTAWORTHY: false,
+      FANCYAF: false,
+      TECHNORAVE: false,
+      DANCEALLNIGHT: false,
+      LIVEBAND: false,
+      ROOFTOP: false,
+      GRUNGY: false,
+      TREATYOSELF: false
+    },
+    cuisine: {
+      ITALIAN: false,
+      ASIAN: false,
+      INDIAN: false,
+      MISCELLANEOUS: false,
+      LOCAL: false,
+      VEGAN: false,
+      VEGETARIAN: false,
+      MEDITERRANEAN: false,
+      MEXICAN: false,
+      AMERICAN: false
     }
   }
 
@@ -55,7 +80,8 @@ class Feed extends React.Component {
               // tags: {
               //   BRUNCH: this.state.tags.BRUNCH
               // }
-              tags: this.state.tags
+              tags: this.state.tags,
+              cuisine: this.state.cuisine
               /**
                * we can just tags: this.state.tags since the tags object in state
                * matches the shape of the tags object our where: expects based on
@@ -92,6 +118,31 @@ class Feed extends React.Component {
                                 tags: {
                                   ...this.state.tags,
                                   [tag]: !this.state.tags[tag]
+                                }
+                              })
+                            }}
+                          />
+                        </label>
+                      </div>
+                    )
+                  })}
+
+                  {Object.keys(this.state.cuisine).map(cus => {
+                    console.log(this.state)
+                    return (
+                      <div className="tag-checkbox">
+                        <label>
+                          {cus}
+                          <Checkbox
+                            key={cus}
+                            className="tags-box"
+                            checked={this.state.cuisine[cus]}
+                            onClick={() => {
+                              this.setState({
+                                ...this.state,
+                                cuisine: {
+                                  ...this.state.cuisine,
+                                  [cus]: !this.state.cuisine[cus]
                                 }
                               })
                             }}

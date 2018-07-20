@@ -24,6 +24,7 @@
   height: 50px;
   padding: 25px;
   box-sizing: border-box;
+  justify-content: flex-start;
 }
 
 .FormGroup {
@@ -50,7 +51,7 @@
   text-align: left;
 }
 
-label {
+.label {
   text-align: left;
   box-sizing: border-box;
 }
@@ -75,7 +76,6 @@ textarea {
 a,
 area,
 input,
-label,
 select,
 summary,
 textarea,

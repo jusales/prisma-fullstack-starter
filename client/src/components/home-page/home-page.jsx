@@ -17,14 +17,14 @@ class HomePage extends React.Component {
                 id="toggleVideo"
                 data-toggle="collapse"
                 className="btn btn-primary btn-xl"
-                onClick={() => this.props.history.push("/foodfeed")}
+                onClick={() => this.props.history.push("/feed")}
               >
                 EAT
               </button>{" "}
               &nbsp;{" "}
               <button
                 className="btn btn-primary btn-xl page-scroll"
-                onClick={() => this.props.history.push("/drinkfeed")}
+                onClick={() => this.props.history.push("/feed")}
               >
                 PARTY
               </button>

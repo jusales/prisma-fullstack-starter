@@ -33,7 +33,7 @@ class Card extends React.Component {
               <span class="pull-right">{this.price[this.props.price]}</span>
             </div>
             <h3>{this.props.name}</h3>
-            <p>Leave message here</p>
+            <p>{this.props.comment}</p>
           </div>
           <hr />
           <div class="caption">

@@ -15,6 +15,7 @@ const CREATE_BUSINESS = gql`
       name
       url
       price
+      type
       cuisine {
         ITALIAN
         ASIAN
@@ -28,11 +29,14 @@ const CREATE_BUSINESS = gql`
         AMERICAN
       }
       tags {
-        BREAKFAST
+        BRUNCH
         LUNCH
         DINNER
-        BRUNCH
-        DESSERT
+        DRUNCHIES
+        CRAFTCOCKTAILS
+        INSTAWORTHY
+        FANCYAF
+        TREATYOSELF
       }
     }
   }
@@ -45,6 +49,7 @@ class SUBMITF extends React.Component {
     name: "",
     url: "",
     hours: "",
+    address: "",
     locality: "",
     comment: "",
     tags: {
@@ -55,6 +60,11 @@ class SUBMITF extends React.Component {
       CRAFTCOCKTAILS: false,
       INSTAWORTHY: false,
       FANCYAF: false,
+      TECHNORAVE: false,
+      DANCEALLNIGHT: false,
+      LIVEBAND: false,
+      ROOFTOP: false,
+      GRUNGY: false,
       TREATYOSELF: false
     },
     cuisine: {
@@ -69,10 +79,8 @@ class SUBMITF extends React.Component {
       MEXICAN: false,
       AMERICAN: false
     },
-    price: "",
     latitude: null,
-    longitude: null,
-    price: "ONE"
+    longitude: null
   }
 
   handleAddressChange = address => {
@@ -127,7 +135,9 @@ class SUBMITF extends React.Component {
                 >
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">Restaurant Name</label>
+                      <label className="label" for="">
+                        Restaurant Name
+                      </label>
                       <input
                         type="text"
                         name="name"
@@ -140,7 +150,9 @@ class SUBMITF extends React.Component {
 
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">Where is it?</label>
+                      <label className="label" for="">
+                        Where is it?
+                      </label>
                       <PlacesAutocomplete
                         value={this.state.address}
                         onChange={this.handleAddressChange}
@@ -195,7 +207,9 @@ class SUBMITF extends React.Component {
 
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">Website</label>
+                      <label className="label" for="">
+                        Website
+                      </label>
                       <input
                         type="text"
                         name="url"
@@ -208,7 +222,9 @@ class SUBMITF extends React.Component {
 
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">When is it open?</label>
+                      <label className="label" for="">
+                        When is it open?
+                      </label>
                       <input
                         type="text"
                         placeholder="Hours"
@@ -221,7 +237,9 @@ class SUBMITF extends React.Component {
 
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">Neighborhood</label>
+                      <label className="label" for="">
+                        Neighborhood
+                      </label>
                       <input
                         type="text"
                         placeholder="'hood"
@@ -236,7 +254,9 @@ class SUBMITF extends React.Component {
 
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">Cuisine Type</label>
+                      <label className="label" for="">
+                        Cuisine Type
+                      </label>
                       <FormGroup className="form-control">
                         {Object.keys(this.state.cuisine).map(key => {
                           const value = this.state.cuisine[key]
@@ -264,7 +284,9 @@ class SUBMITF extends React.Component {
 
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">What's it going to cost me?</label>
+                      <label className="label" for="">
+                        What's it going to cost me?
+                      </label>
                       <FormGroup>
                         <Radio name="radioGroup" inline>
                           {"$"}
@@ -290,7 +312,9 @@ class SUBMITF extends React.Component {
 
                   <div className="col-sm-12">
                     <div className="input-block">
-                      <label for="">Tag It!</label>
+                      <label className="label" for="">
+                        Tag It!
+                      </label>
                       <FormGroup className="form-control">
                         <FormGroup className="form-control">
                           {Object.keys(this.state.tags).map(key => {
@@ -338,7 +362,7 @@ class SUBMITF extends React.Component {
                   </div>
 
                   <div className="col-sm-12">
-                    <button className="square-button" class="button">
+                    <button className="square-button" className="button">
                       Submit Dem Eats!
                     </button>
                   </div>

@@ -7,46 +7,31 @@ class SUBMITD extends React.Component {
   render() {
     return (
       <form className="submit-drink-form">
-        <input 
-            name="name" 
-            placeholder="Venue/Bar Name" 
-            class="name" 
-             
-        />
+        <input name="name" placeholder="Venue/Bar Name" className="name" />
         <input
           name="location"
           placeholder="Where is it?"
-          class="location"
+          className="location"
           type="location"
-          
         />
-        <input
-          name="url"
-          placeholder="Website"
-          class="url"
-          type="url"
-          
-        />
+        <input name="url" placeholder="Website" className="url" type="url" />
         <input
           name="hours"
           placeholder="When is it open?"
-          class="hours"
+          className="hours"
           type="hours"
-          
         />
         <input
           name="locality"
           placeholder="Neighborhood"
-          class="locality"
+          className="locality"
           type="locality"
-          
         />
         <input
           name="price"
           placeholder="What's it going to cost me?"
-          class="price"
+          className="price"
           type="price"
-          
         />
         <FormGroup>
           <Radio name="radioGroup" inline>
@@ -62,9 +47,8 @@ class SUBMITD extends React.Component {
         <input
           name="tags"
           placeholder="Give me some tags!"
-          class="tags"
+          className="tags"
           type="tags"
-          
         />
         <FormGroup>
           <Checkbox inline>{"Techno Rave"}</Checkbox>
@@ -83,12 +67,16 @@ class SUBMITD extends React.Component {
           className="drink"
           name="drinkmessage"
           placeholder="Write your tips and recs here! You can tell us when to go, if its cash only, what the vibe is, if we have to dress up, etc. Give us the low down!"
-          class="drinkmessage"
+          className="drinkmessage"
           type="drinkmessage"
-          
         />
 
-        <input name="submit" class="btn" type="submit" value="Let's Go Out!" />
+        <input
+          name="submit"
+          className="btn"
+          type="submit"
+          value="Let's Go Out!"
+        />
       </form>
     )
   }

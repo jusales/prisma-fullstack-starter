@@ -1,3 +1,32 @@
+.feed-wrapper {
+  background: linear-gradient(#f7cdee, #7d9ffe);
+}
+
 .tags-box {
   width: 100%;
 }
+
+.tag-inputs {
+  display: block;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.tag-checkbox {
+  padding: 15pt;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-orient: horizontal;
+  display: inline-block;
+  color: white;
+}
+
+/* .SearchImprovementsBar-InnerScrollContainer {
+  margin-bottom: -17px;
+  -ms-overflow-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 17px;
+} */
